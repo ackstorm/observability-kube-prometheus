@@ -1,0 +1,100 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  labels:
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: prometheus-peer
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/part-of: kube-prometheus
+    app.kubernetes.io/version: 2.41.0
+  name: prometheus-peer
+  namespace: observability-peer
+spec:
+  additionalScrapeConfigs:
+    key: additional-scrape-configs.yaml
+    name: additional-scrape-configs
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: prometheus
+              app.kubernetes.io/instance: prometheus-peer
+              app.kubernetes.io/name: prometheus
+              app.kubernetes.io/part-of: kube-prometheus
+          namespaces:
+          - observability-peer
+          topologyKey: kubernetes.io/hostname
+        weight: 100
+  containers:
+  - args:
+    - --config.file=/etc/prometheus/config_out/prometheus.env.yaml
+    - --storage.agent.path=/prometheus
+    - --enable-feature=agent
+    - --web.enable-lifecycle
+    name: prometheus
+  enableAdminAPI: false
+  enableFeatures:
+  - agent
+  - memory-snapshot-on-shutdown
+  - remote-write-receiver
+  - exemplar-storage
+  externalLabels:
+    cluster: ${PEER_ENVIRONMENT}-${PEER_CLUSTER}
+    env: ${PEER_ENVIRONMENT}
+  image: quay.io/prometheus/prometheus:v2.41.0
+  nodeSelector:
+    kubernetes.io/os: linux
+  podMetadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: prometheus-peer
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 2.41.0
+  podMonitorNamespaceSelector: {}
+  podMonitorSelector: {}
+  probeNamespaceSelector: {}
+  probeSelector: {}
+  remoteWrite:
+  - basicAuth:
+      password:
+        key: password
+        name: observability-tenant-auth
+      username:
+        key: username
+        name: observability-tenant-auth
+    headers:
+      X-Scope-OrgID: ${PEER_ENVIRONMENT}-${PEER_CLUSTER}
+    queueConfig:
+      maxSamplesPerSend: 5000
+    sendExemplars: true
+    url: ${PEER_OBSERVER_URL}/api/v1/push
+    writeRelabelConfigs:
+    - regex: (.*)
+      sourceLabels:
+      - __name__
+      targetLabel: __name__
+    - action: labeldrop
+      regex: example-label
+  replicas: 1
+  resources:
+    requests:
+      memory: 100Mi
+  retention: 4d
+  ruleNamespaceSelector: {}
+  ruleSelector:
+    matchLabels:
+      role: peer
+  scrapeInterval: 60s
+  securityContext:
+    fsGroup: 2000
+    runAsNonRoot: true
+    runAsUser: 1000
+  serviceAccountName: prometheus-prometheus-peer
+  serviceMonitorNamespaceSelector: {}
+  serviceMonitorSelector: {}
+  tsdb:
+    outOfOrderTimeWindow: 5m
+  version: 2.41.0

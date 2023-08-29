@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: k8s
+    role: peer
+  name: prometheus-rule-peer
+  namespace: observability-peer
+spec:
+  groups:
+  - name: prometheus-rule-peer
+    rules:
+    - alert: WatchdogPeer
+      annotations:
+        description: Always firing alert to check if peer is alive from observer
+      expr: vector(1)
+      labels:
+        observability: peer
+        severity: critical
