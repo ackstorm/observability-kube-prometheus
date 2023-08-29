@@ -1,0 +1,31 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: blackbox-exporter
+  namespace: observability
+spec:
+  groups:
+  - name: blackbox-exporter.rules
+    rules:
+    - alert: BlackboxProbeFailed
+      annotations:
+        dashboard_url: ${OBSERVER_INGRESS_SCHEMA}://${OBSERVER_INGRESS_HOST}/grafana/d/blackbox-exporter-j4da/blackbox-exporter?instance={{ $labels.instance }}
+        description: The probe failed for the instance {{ $labels.instance }}.
+        summary: Probe has failed for the past minute.
+      expr: |
+        probe_success{} == 0
+      for: 5m
+      labels:
+        severity: critical
+    - alert: BlackboxSslCertificateWillExpireSoon
+      annotations:
+        dashboard_url: ${OBSERVER_INGRESS_SCHEMA}://${OBSERVER_INGRESS_HOST}/grafana/d/blackbox-exporter-j4da/blackbox-exporter?instance={{ $labels.instance }}
+        description: The SSL certificate of the instance {{ $labels.instance }} is expiring within 3 weeks.
+        summary: SSL certificate will expire soon.
+      expr: |
+        probe_ssl_earliest_cert_expiry{} - time() < 21 * 24 * 3600
+      labels:
+        severity: warning
