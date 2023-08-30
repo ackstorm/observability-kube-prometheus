@@ -11,6 +11,7 @@ spec:
     key: additional-scrape-configs.yaml
     name: additional-scrape-configs
   enableRemoteWriteReceiver: true
+  enforcedTargetLimit: 1
   externalLabels:
     cluster: ${PEER_ENVIRONMENT}-${PEER_CLUSTER}
     env: ${PEER_ENVIRONMENT}
@@ -26,6 +27,17 @@ spec:
   podMonitorSelector: {}
   probeNamespaceSelector: {}
   probeSelector: {}
+  remoteRead:
+  - basicAuth:
+      password:
+        key: password
+        name: observability-tenant-auth
+      username:
+        key: username
+        name: observability-tenant-auth
+    headers:
+      X-Scope-OrgID: ${PEER_ENVIRONMENT}-${PEER_CLUSTER}
+    url: ${PEER_OBSERVER_URL}/prometheus/api/v1/read
   remoteWrite:
   - basicAuth:
       password:
