@@ -18,8 +18,5 @@ spec:
     port: 8080
     targetPort: reloader-web
   selector:
-    app.kubernetes.io/component: prometheus
-    app.kubernetes.io/instance: prometheus-peer
-    app.kubernetes.io/name: prometheus
-    app.kubernetes.io/part-of: kube-prometheus
+    app.kubernetes.io/name: prometheus-agent
   sessionAffinity: ClientIP
