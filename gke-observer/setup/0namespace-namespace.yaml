@@ -1,6 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  labels:
-    goldilocks.fairwinds.com/enabled: "true"
   name: observability

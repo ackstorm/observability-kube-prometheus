@@ -74,11 +74,8 @@ spec:
   resources:
     requests:
       memory: 100Mi
-  retention: 4d
   ruleNamespaceSelector: {}
-  ruleSelector:
-    matchLabels:
-      role: peer
+  ruleSelector: {}
   scrapeInterval: 60s
   securityContext:
     fsGroup: 2000
@@ -87,6 +84,4 @@ spec:
   serviceAccountName: prometheus-prometheus-peer
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
-  tsdb:
-    outOfOrderTimeWindow: 5m
   version: 2.41.0

@@ -56,4 +56,3 @@ resources:
 - setup/prometheus-operator-service.yaml
 - setup/prometheus-operator-serviceAccount.yaml
 - setup/resourcequota-priorityClass.yaml
-- watchdogpeer-prometheusRule.yaml

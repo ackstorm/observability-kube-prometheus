@@ -16,10 +16,7 @@ resources:
 - kube-state-metrics-service.yaml
 - kube-state-metrics-serviceAccount.yaml
 - kube-state-metrics-serviceMonitor.yaml
-- kubernetes-prometheusRuleAwsVpcCni.yaml
-- kubernetes-serviceAwsVpcCni.yaml
 - kubernetes-serviceMonitorApiserver.yaml
-- kubernetes-serviceMonitorAwsVpcCni.yaml
 - kubernetes-serviceMonitorCoreDNS.yaml
 - kubernetes-serviceMonitorKubelet.yaml
 - node-exporter-clusterRole.yaml
@@ -56,4 +53,3 @@ resources:
 - setup/prometheus-operator-service.yaml
 - setup/prometheus-operator-serviceAccount.yaml
 - setup/resourcequota-priorityClass.yaml
-- watchdogpeer-prometheusRule.yaml
