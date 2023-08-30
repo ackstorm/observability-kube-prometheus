@@ -46,7 +46,7 @@ spec:
           "DeadMansSnitch" integration in PagerDuty.
         runbook_url: https://runbooks.prometheus-operator.dev/runbooks/general/watchdog
         summary: An alert that should always be firing to certify that Alertmanager is working properly.
-      expr: sum without(alertstate,alertname,observability,timeout) (ALERTS{alertstate="firing",alertname="WatchdogPeer",observability="peer"}) > 0
+      expr: absent(up{job="prometheus-prometheus-peer"} == 1)
       labels:
         severity: critical
   - name: node-network
