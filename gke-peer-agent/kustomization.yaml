@@ -26,12 +26,12 @@ resources:
 - node-exporter-service.yaml
 - node-exporter-serviceAccount.yaml
 - node-exporter-serviceMonitor.yaml
+- prometheus-agent.yaml
 - prometheus-clusterRole.yaml
 - prometheus-clusterRoleBinding.yaml
 - prometheus-networkPolicy.yaml
 - prometheus-operator-serviceMonitor.yaml
 - prometheus-podDisruptionBudget.yaml
-- prometheus-prometheus.yaml
 - prometheus-roleBindingConfig.yaml
 - prometheus-roleConfig.yaml
 - prometheus-service.yaml
