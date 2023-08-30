@@ -43,7 +43,9 @@ resources:
 - setup/prometheus-operator-0podmonitorCustomResourceDefinition.yaml
 - setup/prometheus-operator-0probeCustomResourceDefinition.yaml
 - setup/prometheus-operator-0prometheusCustomResourceDefinition.yaml
+- setup/prometheus-operator-0prometheusagentCustomResourceDefinition.yaml
 - setup/prometheus-operator-0prometheusruleCustomResourceDefinition.yaml
+- setup/prometheus-operator-0scrapeconfigCustomResourceDefinition.yaml
 - setup/prometheus-operator-0servicemonitorCustomResourceDefinition.yaml
 - setup/prometheus-operator-0thanosrulerCustomResourceDefinition.yaml
 - setup/prometheus-operator-clusterRole.yaml
