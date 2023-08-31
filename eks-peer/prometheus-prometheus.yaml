@@ -68,12 +68,14 @@ spec:
     sendExemplars: true
     url: ${PEER_OBSERVER_URL}/api/v1/push
     writeRelabelConfigs:
-    - regex: (.*)
-      sourceLabels:
-      - __name__
-      targetLabel: __name__
     - action: labeldrop
-      regex: example-label
+      regex: pod_template_hash|controller_revision_hash|k8s_pod_uid|id|
+    - action: labeldrop
+      regex: applications_argoproj_io_.*
+    - action: labeldrop
+      regex: app_kubernetes_io_instance|app_kubernetes_io_version|app_kubernetes_io_component|app_kubernetes_io_part_of|app_kubernetes_io_managed_by
+    - action: labeldrop
+      regex: linkerd_io_.*
   replicas: 1
   resources:
     requests:

@@ -34,12 +34,6 @@ spec:
       regex: (.+)
       replacement: kube-state-metrics
       sourceLabels:
-      - __name__
-      targetLabel: instance
-    - action: replace
-      regex: (.+)
-      replacement: kube-state-metrics
-      sourceLabels:
       - job
       targetLabel: job
     scheme: https
