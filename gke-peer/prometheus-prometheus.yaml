@@ -31,9 +31,6 @@ spec:
   - name: prometheus
     startupProbe:
       failureThreshold: 120
-  - name: prometheus
-    startupProbe:
-      failureThreshold: 120
   enableAdminAPI: false
   enableFeatures:
   - memory-snapshot-on-shutdown
