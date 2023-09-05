@@ -6610,7 +6610,7 @@ items:
                       "datasource": {
                           "uid": "${datasource_loki}"
                       },
-                      "enable": true,
+                      "enable": false,
                       "expr": "{job=\"observability-peer/event-exporter-peer\"} | json | source_component = `kubelet` | reason =~ `(Created|Killing|BackOff|SystemOOM|Started)`",
                       "iconColor": "super-light-blue",
                       "instant": false,
@@ -6977,7 +6977,7 @@ items:
                               "barAlignment": 0,
                               "drawStyle": "line",
                               "fillOpacity": 25,
-                              "gradientMode": "opacity",
+                              "gradientMode": "none",
                               "hideFrom": {
                                   "legend": false,
                                   "tooltip": false,
@@ -6996,7 +6996,7 @@ items:
                               "spanNulls": false,
                               "stacking": {
                                   "group": "A",
-                                  "mode": "none"
+                                  "mode": "normal"
                               },
                               "thresholdsStyle": {
                                   "mode": "off"
@@ -7026,7 +7026,7 @@ items:
                       ]
                   },
                   "gridPos": {
-                      "h": 8,
+                      "h": 7,
                       "w": 12,
                       "x": 12,
                       "y": 7
@@ -7042,7 +7042,7 @@ items:
                           "displayMode": "table",
                           "placement": "right",
                           "showLegend": true,
-                          "sortBy": "Max",
+                          "sortBy": "Mean",
                           "sortDesc": true
                       },
                       "tooltip": {
@@ -7064,7 +7064,7 @@ items:
                           "refId": "A"
                       }
                   ],
-                  "title": "CPU Utilization by namespace",
+                  "title": "CPU Utilization by namespace (STACKED)",
                   "type": "timeseries"
               },
               {
@@ -7073,7 +7073,7 @@ items:
                       "uid": "000000001"
                   },
                   "gridPos": {
-                      "h": 13,
+                      "h": 11,
                       "w": 12,
                       "x": 0,
                       "y": 10
@@ -7126,7 +7126,7 @@ items:
                               "barAlignment": 0,
                               "drawStyle": "line",
                               "fillOpacity": 25,
-                              "gradientMode": "opacity",
+                              "gradientMode": "none",
                               "hideFrom": {
                                   "legend": false,
                                   "tooltip": false,
@@ -7142,7 +7142,7 @@ items:
                               "spanNulls": false,
                               "stacking": {
                                   "group": "A",
-                                  "mode": "none"
+                                  "mode": "normal"
                               },
                               "thresholdsStyle": {
                                   "mode": "off"
@@ -7171,10 +7171,10 @@ items:
                       ]
                   },
                   "gridPos": {
-                      "h": 8,
+                      "h": 7,
                       "w": 12,
                       "x": 12,
-                      "y": 15
+                      "y": 14
                   },
                   "id": 29,
                   "options": {
@@ -7187,7 +7187,7 @@ items:
                           "displayMode": "table",
                           "placement": "right",
                           "showLegend": true,
-                          "sortBy": "Max",
+                          "sortBy": "Mean",
                           "sortDesc": true
                       },
                       "tooltip": {
@@ -7209,7 +7209,7 @@ items:
                           "refId": "A"
                       }
                   ],
-                  "title": "Memory Utilization by namespace",
+                  "title": "Memory Utilization by namespace (STACKED)",
                   "type": "timeseries"
               },
               {
@@ -7221,7 +7221,7 @@ items:
                       "h": 4,
                       "w": 12,
                       "x": 0,
-                      "y": 23
+                      "y": 21
                   },
                   "id": 13,
                   "options": {
@@ -7251,10 +7251,10 @@ items:
                       "uid": "${datasource_loki}"
                   },
                   "gridPos": {
-                      "h": 10,
+                      "h": 11,
                       "w": 12,
                       "x": 12,
-                      "y": 23
+                      "y": 21
                   },
                   "id": 27,
                   "links": [
@@ -7294,10 +7294,10 @@ items:
                       "uid": "000000001"
                   },
                   "gridPos": {
-                      "h": 6,
+                      "h": 7,
                       "w": 12,
                       "x": 0,
-                      "y": 27
+                      "y": 25
                   },
                   "id": 7,
                   "options": {
