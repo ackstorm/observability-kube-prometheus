@@ -6588,8 +6588,8 @@ items:
                   {
                       "builtIn": 1,
                       "datasource": {
-                          "type": "datasource",
-                          "uid": "grafana"
+                          "type": "prometheus",
+                          "uid": "${datasource}"
                       },
                       "enable": true,
                       "hide": true,
@@ -6598,6 +6598,7 @@ items:
                       "target": {
                           "limit": 100,
                           "matchAny": false,
+                          "queryType": "annotations",
                           "tags": [
 
                           ],
@@ -6655,7 +6656,7 @@ items:
                           "showLineNumbers": false,
                           "showMiniMap": false
                       },
-                      "content": "<div style=\"padding: 10px;\">\n  <div style=\"margin-bottom: 30px;display: flex; flex-direction: row; align-items: center; margin-top: 10px;\">\n    <img style=\"height: 40px; width: 40px; margin-right: 10px;\" src=\"https://storage.googleapis.com/grafanalabs-integration-logos/kubernetes.svg\" />\n    <h2 style=\"margin-top: 5px;\">Welcome to Grafana Cloud for Kubernetes</h2>\n  </div>\n  <div style=\"display: flex; width: 100%;\">\n    <div style=\"width: 50%;\">\n      <div style=\"margin: 0 0 10px 0;display: flex; \">\n        <img style=\"margin-right: 20px; margin-top: 10px; height: 25px;\" src=\"https://storage.googleapis.com/k8s-integration-icons/compass.png\" alt=\"\">\n        <p style=\"width: 80%; margin-top: 5px;\">Visualize and query cAdvisor, Kubelet and kube-state-metrics for your K8s cluster(s)</p>\n      </div>\n      <div style=\"margin: 10px 0 10px 0;display: flex; \">\n        <img style=\"margin-right: 20px; margin-top: 10px; height: 25px;\" src=\"https://storage.googleapis.com/k8s-integration-icons/dash.png\" alt=\"\">\n        <p style=\"width: 80%; margin-top: 5px;\">Access premade dashboards for visibility into resource consumption and cluster operations</p>\n      </div>\n    </div>\n    <div style=\"width: 50%; margin-top: 0;\">\n      <div style=\"margin: 0 0 10px 0; display: flex; \">\n        <img style=\"margin-right: 20px; margin-top: 10px; height: 25px;\" src=\"https://storage.googleapis.com/k8s-integration-icons/bell.png\" alt=\"\">\n        <p style=\"width: 80%; margin-top: 5px;\">Create alerts based on cAdvisor and kube-state-metrics in Grafana Cloud Alerting</p>\n      </div>\n      <div style=\"margin: 0 0 10px 0; display: flex; \">\n        <img style=\"margin-right: 20px; margin-top: 10px; height: 25px;\" src=\"https://storage.googleapis.com/k8s-integration-icons/loki.svg\" alt=\"\">\n        <p style=\"width: 80%; margin-top: 5px;\">Collect and ship Pod logs to Grafana Cloud. Learn more <a href=\"https://grafana.com/docs/grafana-cloud/quickstart/agent-k8s/k8s_agent_logs/\" target=\"_blank\">here</a>.</p>\n      </div>\n    </div>\n  </div>\n</div>",
+                      "content": "<div style=\"padding: 10px;\">\n  <div style=\"margin-bottom: 30px;display: flex; flex-direction: row; align-items: center; margin-top: 10px;\">\n    <img style=\"height: 40px; width: 40px; margin-right: 10px;\" src=\"https://storage.googleapis.com/grafanalabs-integration-logos/kubernetes.svg\" />\n    <h2 style=\"margin-top: 5px;\">Welcome to Grafana for Kubernetes</h2>\n  </div>\n  <div style=\"display: flex; width: 100%;\">\n    <div style=\"width: 50%;\">\n      <div style=\"margin: 0 0 10px 0;display: flex; \">\n        <img style=\"margin-right: 20px; margin-top: 10px; height: 25px;\" src=\"https://storage.googleapis.com/k8s-integration-icons/compass.png\" alt=\"\">\n        <p style=\"width: 80%; margin-top: 5px;\">Visualize and query cAdvisor, Kubelet and kube-state-metrics for your K8s cluster(s)</p>\n      </div>\n      <div style=\"margin: 10px 0 10px 0;display: flex; \">\n        <img style=\"margin-right: 20px; margin-top: 10px; height: 25px;\" src=\"https://storage.googleapis.com/k8s-integration-icons/dash.png\" alt=\"\">\n        <p style=\"width: 80%; margin-top: 5px;\">Access premade dashboards for visibility into resource consumption and cluster operations</p>\n      </div>\n    </div>\n    <div style=\"width: 50%; margin-top: 0;\">\n      <div style=\"margin: 0 0 10px 0; display: flex; \">\n        <img style=\"margin-right: 20px; margin-top: 10px; height: 25px;\" src=\"https://storage.googleapis.com/k8s-integration-icons/bell.png\" alt=\"\">\n        <p style=\"width: 80%; margin-top: 5px;\">Create alerts based on cAdvisor and kube-state-metrics in Grafana Cloud Alerting</p>\n      </div>\n      <div style=\"margin: 0 0 10px 0; display: flex; \">\n        <img style=\"margin-right: 20px; margin-top: 10px; height: 25px;\" src=\"https://storage.googleapis.com/k8s-integration-icons/loki.svg\" alt=\"\">\n        <p style=\"width: 80%; margin-top: 5px;\">Collect and ship Pod logs to Grafana Cloud. Learn more <a href=\"https://grafana.com/docs/grafana-cloud/quickstart/agent-k8s/k8s_agent_logs/\" target=\"_blank\">here</a>.</p>\n      </div>\n    </div>\n  </div>\n</div>",
                       "mode": "html"
                   },
                   "pluginVersion": "10.0.3",
@@ -7284,7 +7285,7 @@ items:
                           "refId": "A"
                       }
                   ],
-                  "title": "Events",
+                  "title": "K8S Events",
                   "type": "logs"
               },
               {
@@ -7337,7 +7338,7 @@ items:
               "list": [
                   {
                       "current": {
-                          "selected": false,
+                          "selected": true,
                           "text": "metrics-pro-core-01",
                           "value": "metrics-pro-core-01"
                       },
@@ -7366,7 +7367,7 @@ items:
                           "uid": "${datasource}"
                       },
                       "definition": "label_values(up{job=\"kubelet\"},cluster)",
-                      "hide": 0,
+                      "hide": 2,
                       "includeAll": false,
                       "label": "cluster",
                       "multi": false,
@@ -7412,47 +7413,25 @@ items:
                       "type": "query"
                   },
                   {
-                      "allValue": "",
-                      "current": {
-                          "selected": false,
-                          "text": "logs-pro-ctt-observability",
-                          "value": "logs-pro-ctt-observability"
-                      },
-                      "hide": 0,
-                      "includeAll": false,
-                      "label": "Events Data Source",
-                      "multi": false,
-                      "name": "datasource_loki",
-                      "options": [
-
-                      ],
-                      "query": "loki",
-                      "queryValue": "",
-                      "refresh": 1,
-                      "regex": "",
-                      "skipUrlSync": false,
-                      "type": "datasource"
-                  },
-                  {
                       "auto": true,
                       "auto_count": 30,
                       "auto_min": "1m",
                       "current": {
                           "selected": false,
-                          "text": "1m",
-                          "value": "1m"
+                          "text": "auto",
+                          "value": "$__auto_interval_resolution"
                       },
                       "hide": 0,
                       "label": "Interval",
                       "name": "resolution",
                       "options": [
                           {
-                              "selected": false,
+                              "selected": true,
                               "text": "auto",
                               "value": "$__auto_interval_resolution"
                           },
                           {
-                              "selected": true,
+                              "selected": false,
                               "text": "1m",
                               "value": "1m"
                           },
@@ -7513,9 +7492,39 @@ items:
                           }
                       ],
                       "query": "1m,2m,5m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+                      "queryValue": "",
                       "refresh": 2,
                       "skipUrlSync": false,
                       "type": "interval"
+                  },
+                  {
+                      "current": {
+                          "selected": false,
+                          "text": "logs-pro-core-01",
+                          "value": "logs-pro-core-01"
+                      },
+                      "datasource": {
+                          "type": "prometheus",
+                          "uid": "${datasource}"
+                      },
+                      "definition": "query_result(label_replace(up{job=\"kube-state-metrics\"}, \"datasource\", \"logs-$1\", \"cluster\", \"(.*)\"))",
+                      "hide": 2,
+                      "includeAll": false,
+                      "label": "",
+                      "multi": false,
+                      "name": "datasource_loki",
+                      "options": [
+
+                      ],
+                      "query": {
+                          "query": "query_result(label_replace(up{job=\"kube-state-metrics\"}, \"datasource\", \"logs-$1\", \"cluster\", \"(.*)\"))",
+                          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+                      },
+                      "refresh": 1,
+                      "regex": "/.*datasource=\\\"(.*?)\\\".*/",
+                      "skipUrlSync": false,
+                      "sort": 0,
+                      "type": "query"
                   }
               ]
           },
