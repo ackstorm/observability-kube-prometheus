@@ -7528,7 +7528,7 @@ items:
           },
           "timezone": "",
           "title": "Observability - home",
-          "uid": "o11y-home",
+          "uid": "bf26a4fb-4c49-44b7-a9f2-8f6f57b4c847",
           "version": 9,
           "weekStart": ""
       }
