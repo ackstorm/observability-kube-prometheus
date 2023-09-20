@@ -3,7 +3,7 @@ kind: PrometheusRule
 metadata:
   labels:
     prometheus: k8s
-    role: all-tenants
+    tenant: all-tenants
   name: blackbox-exporter
   namespace: observability
 spec:
