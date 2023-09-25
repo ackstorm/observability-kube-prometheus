@@ -6974,6 +6974,7 @@ items:
                               "axisColorMode": "text",
                               "axisLabel": "CPU CORES",
                               "axisPlacement": "auto",
+                              "axisSoftMin": 0,
                               "barAlignment": 0,
                               "drawStyle": "line",
                               "fillOpacity": 25,
@@ -7123,6 +7124,7 @@ items:
                               "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
+                              "axisSoftMin": 0,
                               "barAlignment": 0,
                               "drawStyle": "line",
                               "fillOpacity": 25,
@@ -7258,10 +7260,7 @@ items:
                   },
                   "id": 27,
                   "links": [
-                      {
-                          "title": "K8s Events Integration Docs",
-                          "url": "https://grafana.com/docs/grafana-cloud/kubernetes/integration-kubernetes/events/"
-                      }
+
                   ],
                   "options": {
                       "dedupStrategy": "none",
@@ -7339,8 +7338,8 @@ items:
                   {
                       "current": {
                           "selected": true,
-                          "text": "metrics-pro-core-01",
-                          "value": "metrics-pro-core-01"
+                          "text": "metrics-pro-ctt-observability",
+                          "value": "metrics-pro-ctt-observability"
                       },
                       "hide": 0,
                       "includeAll": false,
@@ -7360,8 +7359,8 @@ items:
                   {
                       "current": {
                           "selected": false,
-                          "text": "pro-core-01",
-                          "value": "pro-core-01"
+                          "text": "pro-ctt-observability",
+                          "value": "pro-ctt-observability"
                       },
                       "datasource": {
                           "uid": "${datasource}"
@@ -7500,8 +7499,8 @@ items:
                   {
                       "current": {
                           "selected": false,
-                          "text": "logs-pro-core-01",
-                          "value": "logs-pro-core-01"
+                          "text": "logs-pro-ctt-observability",
+                          "value": "logs-pro-ctt-observability"
                       },
                       "datasource": {
                           "type": "prometheus",
