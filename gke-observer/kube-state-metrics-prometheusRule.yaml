@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-prometheus
     app.kubernetes.io/version: 2.9.2
-    peer: all-peers
+    peer-id: all-peers
   name: kube-state-metrics-rules
   namespace: observability
 spec:

@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: exporter
     app.kubernetes.io/name: kube-prometheus
     app.kubernetes.io/part-of: kube-prometheus
-    peer: all-peers
+    peer-id: all-peers
   name: kube-prometheus-rules
   namespace: observability
 spec:

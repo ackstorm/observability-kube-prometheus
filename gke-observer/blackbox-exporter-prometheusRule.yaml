@@ -2,7 +2,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   labels:
-    peer: all-peers
+    peer-id: all-peers
     prometheus: k8s
   name: blackbox-exporter
   namespace: observability
