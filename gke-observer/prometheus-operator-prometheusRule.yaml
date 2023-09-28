@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/name: prometheus-operator
     app.kubernetes.io/part-of: kube-prometheus
     app.kubernetes.io/version: 0.67.1
-    tenant: all-tenants
+    peer: all-peers
   name: prometheus-operator-rules
   namespace: observability
 spec:

@@ -39,10 +39,10 @@ spec:
   - basicAuth:
       password:
         key: password
-        name: observability-tenant-auth
+        name: observability-peer-auth
       username:
         key: username
-        name: observability-tenant-auth
+        name: observability-peer-auth
     headers:
       X-Scope-OrgID: ${PEER_ENVIRONMENT}-${PEER_CLUSTER}
     queueConfig:
