@@ -16263,7 +16263,7 @@ items:
           "editable": true,
           "fiscalYearStartMonth": 0,
           "graphTooltip": 1,
-          "id": 126,
+          "id": 1504,
           "links": [
 
           ],
@@ -16346,7 +16346,7 @@ items:
 
                       }
                   },
-                  "pluginVersion": "10.0.1",
+                  "pluginVersion": "10.1.2",
                   "targets": [
                       {
                           "datasource": {
@@ -16422,7 +16422,7 @@ items:
 
                       }
                   },
-                  "pluginVersion": "10.0.1",
+                  "pluginVersion": "10.1.2",
                   "targets": [
                       {
                           "datasource": {
@@ -16489,7 +16489,7 @@ items:
                       },
                       "textMode": "value"
                   },
-                  "pluginVersion": "10.0.1",
+                  "pluginVersion": "10.1.2",
                   "targets": [
                       {
                           "datasource": {
@@ -16632,7 +16632,7 @@ items:
 
                       ]
                   },
-                  "pluginVersion": "10.0.1",
+                  "pluginVersion": "10.1.2",
                   "targets": [
                       {
                           "datasource": {
@@ -16796,7 +16796,7 @@ items:
                       },
                       "textMode": "auto"
                   },
-                  "pluginVersion": "10.0.1",
+                  "pluginVersion": "10.1.2",
                   "targets": [
                       {
                           "datasource": {
@@ -16864,7 +16864,7 @@ items:
                       },
                       "textMode": "auto"
                   },
-                  "pluginVersion": "10.0.1",
+                  "pluginVersion": "10.1.2",
                   "targets": [
                       {
                           "datasource": {
@@ -16931,7 +16931,7 @@ items:
                       },
                       "textMode": "auto"
                   },
-                  "pluginVersion": "10.0.1",
+                  "pluginVersion": "10.1.2",
                   "targets": [
                       {
                           "datasource": {
@@ -16999,7 +16999,7 @@ items:
                       },
                       "textMode": "auto"
                   },
-                  "pluginVersion": "10.0.1",
+                  "pluginVersion": "10.1.2",
                   "targets": [
                       {
                           "datasource": {
@@ -17075,7 +17075,7 @@ items:
                       },
                       "textMode": "auto"
                   },
-                  "pluginVersion": "10.0.1",
+                  "pluginVersion": "10.1.2",
                   "targets": [
                       {
                           "datasource": {
@@ -17136,6 +17136,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineStyle": {
                                   "fill": "solid"
@@ -17241,6 +17242,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineStyle": {
                                   "fill": "solid"
@@ -17416,6 +17418,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineWidth": 2,
                               "pointSize": 5,
@@ -17516,6 +17519,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineWidth": 2,
                               "pointSize": 5,
@@ -17617,6 +17621,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineStyle": {
                                   "fill": "solid"
@@ -17644,7 +17649,8 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green"
+                                      "color": "green",
+                                      "value": null
                                   },
                                   {
                                       "color": "red",
@@ -17745,6 +17751,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineStyle": {
                                   "fill": "solid"
@@ -17771,7 +17778,8 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green"
+                                      "color": "green",
+                                      "value": null
                                   },
                                   {
                                       "color": "red",
@@ -17875,6 +17883,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineWidth": 2,
                               "pointSize": 5,
@@ -17898,7 +17907,8 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green"
+                                      "color": "green",
+                                      "value": null
                                   },
                                   {
                                       "color": "red",
@@ -17989,6 +17999,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineStyle": {
                                   "fill": "solid"
@@ -18015,7 +18026,8 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green"
+                                      "color": "green",
+                                      "value": null
                                   },
                                   {
                                       "color": "red",
@@ -18105,6 +18117,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineStyle": {
                                   "fill": "solid"
@@ -18131,7 +18144,8 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green"
+                                      "color": "green",
+                                      "value": null
                                   },
                                   {
                                       "color": "red",
@@ -18243,6 +18257,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "linear",
                               "lineWidth": 2,
                               "pointSize": 5,
@@ -18266,7 +18281,8 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green"
+                                      "color": "green",
+                                      "value": null
                                   },
                                   {
                                       "color": "red",
@@ -18357,6 +18373,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineWidth": 2,
                               "pointSize": 5,
@@ -18380,7 +18397,8 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green"
+                                      "color": "green",
+                                      "value": null
                                   },
                                   {
                                       "color": "red",
@@ -20175,8 +20193,8 @@ items:
                   {
                       "current": {
                           "selected": true,
-                          "text": "metrics-prod-observer",
-                          "value": "metrics-prod-observer"
+                          "text": "metrics-pro-core-01",
+                          "value": "metrics-pro-core-01"
                       },
                       "hide": 0,
                       "includeAll": false,
@@ -20194,9 +20212,9 @@ items:
                   },
                   {
                       "current": {
-                          "selected": false,
-                          "text": "default-20230721163032069400000001",
-                          "value": "default-20230721163032069400000001"
+                          "selected": true,
+                          "text": "production-ng-r5-xlarge",
+                          "value": "production-ng-r5-xlarge"
                       },
                       "datasource": {
                           "type": "prometheus",
@@ -20223,15 +20241,15 @@ items:
                   },
                   {
                       "current": {
-                          "selected": false,
-                          "text": "ip-10-0-1-222.eu-central-1.compute.internal",
-                          "value": "ip-10-0-1-222.eu-central-1.compute.internal"
+                          "selected": true,
+                          "text": "ip-10-21-103-179.eu-central-1.compute.internal",
+                          "value": "ip-10-21-103-179.eu-central-1.compute.internal"
                       },
                       "datasource": {
                           "type": "prometheus",
                           "uid": "${datasource}"
                       },
-                      "definition": "label_values(kube_node_labels{label_nodegroup=\"$nodegroup\",instance=\"kube-state-metrics\"},node)",
+                      "definition": "label_values(kube_node_labels{label_nodegroup=\"$nodegroup\"},node)",
                       "hide": 0,
                       "includeAll": false,
                       "multi": false,
@@ -20240,7 +20258,7 @@ items:
 
                       ],
                       "query": {
-                          "query": "label_values(kube_node_labels{label_nodegroup=\"$nodegroup\",instance=\"kube-state-metrics\"},node)",
+                          "query": "label_values(kube_node_labels{label_nodegroup=\"$nodegroup\"},node)",
                           "refId": "PrometheusVariableQueryEditor-VariableQuery"
                       },
                       "refresh": 2,
@@ -20252,8 +20270,8 @@ items:
                   {
                       "current": {
                           "selected": false,
-                          "text": "ip-10-0-1-222.eu-central-1.compute.internal",
-                          "value": "ip-10-0-1-222.eu-central-1.compute.internal"
+                          "text": "ip-10-21-103-179.eu-central-1.compute.internal",
+                          "value": "ip-10-21-103-179.eu-central-1.compute.internal"
                       },
                       "datasource": {
                           "type": "prometheus",
@@ -20282,7 +20300,7 @@ items:
                       "auto_count": 30,
                       "auto_min": "30s",
                       "current": {
-                          "selected": true,
+                          "selected": false,
                           "text": "auto",
                           "value": "$__auto_interval_resolution"
                       },
