@@ -4,7 +4,6 @@ resources:
 - alertmanager-prometheusRule.yaml
 - blackbox-exporter-prometheusRule.yaml
 - kube-prometheus-prometheusRule.yaml
-- kube-state-metrics-prometheusRule.yaml
 - kubernetes-prometheusRule.yaml
 - node-exporter-prometheusRule.yaml
 - prometheus-operator-prometheusRule.yaml
