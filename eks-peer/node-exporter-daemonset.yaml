@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: exporter
     app.kubernetes.io/name: node-exporter-peer
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 1.6.1
+    app.kubernetes.io/version: 1.7.0
   name: node-exporter-peer
   namespace: observability-peer
 spec:
@@ -22,7 +22,7 @@ spec:
         app.kubernetes.io/component: exporter
         app.kubernetes.io/name: node-exporter-peer
         app.kubernetes.io/part-of: kube-prometheus
-        app.kubernetes.io/version: 1.6.1
+        app.kubernetes.io/version: 1.7.0
     spec:
       automountServiceAccountToken: true
       containers:
@@ -42,7 +42,7 @@ spec:
         - --no-collector.sockstat
         - --no-collector.softnet
         - --collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
-        image: quay.io/prometheus/node-exporter:v1.6.1
+        image: quay.io/prometheus/node-exporter:v1.7.0
         name: node-exporter-peer
         resources:
           limits:
@@ -77,7 +77,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        image: quay.io/brancz/kube-rbac-proxy:v0.14.2
+        image: quay.io/brancz/kube-rbac-proxy:v0.15.0
         name: kube-rbac-proxy
         ports:
         - containerPort: 9100
@@ -99,6 +99,8 @@ spec:
           runAsGroup: 65532
           runAsNonRoot: true
           runAsUser: 65532
+          seccompProfile:
+            type: RuntimeDefault
       hostNetwork: true
       hostPID: true
       nodeSelector:
