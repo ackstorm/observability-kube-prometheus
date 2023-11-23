@@ -53,9 +53,9 @@ spec:
     - action: labeldrop
       regex: pod_template_hash|controller_revision_hash|k8s_replicaset_name|k8s_pod_uid
     - action: labeldrop
-      regex: applications_argoproj_io*
+      regex: applications_argoproj_io_.*|kustomize.*
     - action: labeldrop
-      regex: app_kubernetes_io_instance|app_kubernetes_io_version|app_kubernetes_io_component|app_kubernetes_io_part_of|app_kubernetes_io_managed_by
+      regex: app_kubernetes_io_instance|app_kubernetes_io_version|app_kubernetes_io_component|app_kubernetes_io_part_of|app_kubernetes_io_managed_by|helm_sh_chart
     - action: labeldrop
       regex: linkerd_io_.*
   replicas: 1
