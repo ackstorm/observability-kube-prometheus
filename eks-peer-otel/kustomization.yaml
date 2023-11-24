@@ -13,7 +13,6 @@ resources:
 - kubernetes-serviceAwsVpcCni.yaml
 - kubernetes-serviceMonitorApiserver.yaml
 - kubernetes-serviceMonitorAwsVpcCni.yaml
-- kubernetes-serviceMonitorCoreDNS.yaml
 - kubernetes-serviceMonitorKubelet.yaml
 - node-exporter-clusterRole.yaml
 - node-exporter-clusterRoleBinding.yaml

@@ -10,7 +10,6 @@ resources:
 - blackbox-exporter-serviceAccount.yaml
 - blackbox-exporter-serviceMonitor.yaml
 - kubernetes-serviceMonitorApiserver.yaml
-- kubernetes-serviceMonitorCoreDNS.yaml
 - kubernetes-serviceMonitorKubelet.yaml
 - node-exporter-clusterRole.yaml
 - node-exporter-clusterRoleBinding.yaml
