@@ -1763,7 +1763,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-apiserver
     namespace: observability
@@ -2813,7 +2813,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-blackbox-exporter-overview
     namespace: observability
@@ -4094,7 +4094,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-blackbox-exporter
     namespace: observability
@@ -5971,7 +5971,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-cluster-total
     namespace: observability
@@ -6946,7 +6946,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-home
     namespace: observability
@@ -8396,7 +8396,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-ackstorm-cluster-overview
     namespace: observability
@@ -12055,7 +12055,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-ackstorm-kubernetes-overview
     namespace: observability
@@ -13024,7 +13024,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-ackstorm-resource-efficiency
     namespace: observability
@@ -14528,7 +14528,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-ackstorm-system-api-server
     namespace: observability
@@ -16233,7 +16233,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-ackstorm-system-coredns
     namespace: observability
@@ -16269,7 +16269,7 @@ items:
           "editable": true,
           "fiscalYearStartMonth": 0,
           "graphTooltip": 1,
-          "id": 93,
+          "id": 1902,
           "links": [
 
           ],
@@ -16339,6 +16339,7 @@ items:
                       "displayMode": "lcd",
                       "minVizHeight": 10,
                       "minVizWidth": 0,
+                      "namePlacement": "auto",
                       "orientation": "horizontal",
                       "reduceOptions": {
                           "calcs": [
@@ -16350,7 +16351,7 @@ items:
                       "showUnfilled": true,
                       "valueMode": "color"
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "10.2.0",
                   "targets": [
                       {
                           "datasource": {
@@ -16439,6 +16440,7 @@ items:
                       "displayMode": "lcd",
                       "minVizHeight": 10,
                       "minVizWidth": 0,
+                      "namePlacement": "auto",
                       "orientation": "horizontal",
                       "reduceOptions": {
                           "calcs": [
@@ -16453,7 +16455,7 @@ items:
                       },
                       "valueMode": "color"
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "10.2.0",
                   "targets": [
                       {
                           "datasource": {
@@ -16545,7 +16547,7 @@ items:
                       },
                       "textMode": "value"
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "10.2.0",
                   "targets": [
                       {
                           "datasource": {
@@ -16573,6 +16575,7 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisBorderShow": false,
                               "axisCenteredZero": false,
                               "axisColorMode": "text",
                               "axisLabel": "",
@@ -16586,6 +16589,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineWidth": 2,
                               "pointSize": 5,
@@ -16605,6 +16609,7 @@ items:
                           "mappings": [
 
                           ],
+                          "min": 0,
                           "thresholds": {
                               "mode": "absolute",
                               "steps": [
@@ -16857,7 +16862,7 @@ items:
                       },
                       "textMode": "value"
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "10.2.0",
                   "targets": [
                       {
                           "datasource": {
@@ -16923,7 +16928,7 @@ items:
                       },
                       "textMode": "auto"
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "10.2.0",
                   "targets": [
                       {
                           "datasource": {
@@ -17028,7 +17033,7 @@ items:
                       },
                       "textMode": "auto"
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "10.2.0",
                   "targets": [
                       {
                           "datasource": {
@@ -17132,7 +17137,7 @@ items:
                       },
                       "textMode": "value"
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "10.2.0",
                   "targets": [
                       {
                           "datasource": {
@@ -17159,6 +17164,7 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisBorderShow": false,
                               "axisCenteredZero": false,
                               "axisColorMode": "text",
                               "axisLabel": "",
@@ -17172,6 +17178,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineWidth": 2,
                               "pointSize": 5,
@@ -17278,6 +17285,7 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisBorderShow": false,
                               "axisCenteredZero": false,
                               "axisColorMode": "text",
                               "axisLabel": "",
@@ -17291,6 +17299,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineWidth": 2,
                               "pointSize": 5,
@@ -17405,6 +17414,7 @@ items:
                               "seriesBy": "last"
                           },
                           "custom": {
+                              "axisBorderShow": false,
                               "axisCenteredZero": false,
                               "axisColorMode": "text",
                               "axisLabel": "CPU %",
@@ -17418,6 +17428,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineStyle": {
                                   "fill": "solid"
@@ -17515,6 +17526,7 @@ items:
                               "mode": "continuous-GrYlRd"
                           },
                           "custom": {
+                              "axisBorderShow": false,
                               "axisCenteredZero": false,
                               "axisColorMode": "text",
                               "axisLabel": "MEMORY",
@@ -17528,6 +17540,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineWidth": 2,
                               "pointSize": 5,
@@ -17626,6 +17639,7 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisBorderShow": false,
                               "axisCenteredZero": false,
                               "axisColorMode": "text",
                               "axisLabel": "CPU CORES",
@@ -17639,6 +17653,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineStyle": {
                                   "fill": "solid"
@@ -17734,6 +17749,7 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisBorderShow": false,
                               "axisCenteredZero": false,
                               "axisColorMode": "text",
                               "axisLabel": "",
@@ -17747,6 +17763,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineWidth": 2,
                               "pointSize": 5,
@@ -17838,6 +17855,7 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisBorderShow": false,
                               "axisCenteredZero": false,
                               "axisColorMode": "text",
                               "axisLabel": "CPU %",
@@ -17851,6 +17869,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineWidth": 2,
                               "pointSize": 5,
@@ -17945,6 +17964,7 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisBorderShow": false,
                               "axisCenteredZero": false,
                               "axisColorMode": "text",
                               "axisLabel": "MEMORY",
@@ -17958,6 +17978,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineWidth": 2,
                               "pointSize": 5,
@@ -18092,8 +18113,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -18203,8 +18223,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -18329,8 +18348,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -18444,8 +18462,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -18559,8 +18576,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -18674,8 +18690,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -18790,8 +18805,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -18906,8 +18920,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -18977,7 +18990,6 @@ items:
           ],
           "refresh": "1m",
           "schemaVersion": 38,
-          "style": "dark",
           "tags": [
               "Kubernetes",
               "Prometheus"
@@ -18987,8 +18999,8 @@ items:
                   {
                       "current": {
                           "selected": true,
-                          "text": "metrics-pro-ctt-observability",
-                          "value": "metrics-pro-ctt-observability"
+                          "text": "metrics-pro-cloud-apps-01",
+                          "value": "metrics-pro-cloud-apps-01"
                       },
                       "hide": 0,
                       "includeAll": false,
@@ -19080,7 +19092,7 @@ items:
               ]
           },
           "time": {
-              "from": "now-2d",
+              "from": "now-24h",
               "to": "now"
           },
           "timepicker": {
@@ -19102,7 +19114,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-ackstorm-views-global
     namespace: observability
@@ -21251,7 +21263,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-ackstorm-views-namespaces
     namespace: observability
@@ -25423,7 +25435,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-ackstorm-views-nodes
     namespace: observability
@@ -26605,7 +26617,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-ackstorm-views-pods-resources
     namespace: observability
@@ -29028,7 +29040,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-ackstorm-views-pods
     namespace: observability
@@ -32028,7 +32040,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-resources-cluster
     namespace: observability
@@ -33378,7 +33390,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-resources-multicluster
     namespace: observability
@@ -36087,7 +36099,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-resources-namespace
     namespace: observability
@@ -37073,7 +37085,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-resources-node
     namespace: observability
@@ -39460,7 +39472,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-resources-pod
     namespace: observability
@@ -41426,7 +41438,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-resources-workload
     namespace: observability
@@ -43545,7 +43557,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-k8s-resources-workloads-namespace
     namespace: observability
@@ -45794,7 +45806,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-kubelet
     namespace: observability
@@ -47253,7 +47265,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-namespace-by-pod
     namespace: observability
@@ -48984,7 +48996,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-namespace-by-workload
     namespace: observability
@@ -50041,7 +50053,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-node-cluster-rsrc-use
     namespace: observability
@@ -54490,7 +54502,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-node-exporter
     namespace: observability
@@ -55573,7 +55585,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-node-rsrc-use
     namespace: observability
@@ -56633,7 +56645,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-nodes
     namespace: observability
@@ -57749,7 +57761,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-opentelemetry-spanmetrics
     namespace: observability
@@ -58331,7 +58343,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-persistentvolumesusage
     namespace: observability
@@ -59554,7 +59566,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-pod-total
     namespace: observability
@@ -60372,7 +60384,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-prometheus-cardinality-explorer
     namespace: observability
@@ -61837,7 +61849,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-prometheus-overview
     namespace: observability
@@ -63501,7 +63513,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-prometheus-remote-write
     namespace: observability
@@ -64934,7 +64946,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 10.2.1
+      app.kubernetes.io/version: 10.2.2
       grafana_dashboard: "1"
     name: grafana-dashboard-workload-total
     namespace: observability
