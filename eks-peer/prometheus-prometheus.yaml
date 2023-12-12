@@ -79,6 +79,7 @@ spec:
   replicas: 1
   resources:
     requests:
+      cpu: "100"
       memory: 100Mi
   retention: 4d
   ruleNamespaceSelector: {}
