@@ -34,6 +34,7 @@ spec:
   enableAdminAPI: false
   enableFeatures:
   - memory-snapshot-on-shutdown
+  - new-service-discovery-manager
   - remote-write-receiver
   - exemplar-storage
   externalLabels:
@@ -64,7 +65,9 @@ spec:
     headers:
       X-Scope-OrgID: ${PEER_ID}
     queueConfig:
+      capacity: 1000
       maxSamplesPerSend: 5000
+      maxShards: 200
     sendExemplars: true
     url: ${PEER_OBSERVER_URL}/api/v1/push
     writeRelabelConfigs:
