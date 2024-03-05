@@ -17,7 +17,7 @@ spec:
         matchLabels:
           app.kubernetes.io/name: prometheus
     ports:
-    - port: 9100
+    - port: 9001
       protocol: TCP
   podSelector:
     matchLabels:

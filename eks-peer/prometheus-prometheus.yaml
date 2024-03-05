@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/instance: prometheus-peer
     app.kubernetes.io/name: prometheus
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 2.48.0
+    app.kubernetes.io/version: 2.48.1
   name: prometheus-peer
   namespace: observability-peer
 spec:
@@ -33,6 +33,7 @@ spec:
       failureThreshold: 120
   enableAdminAPI: false
   enableFeatures:
+  - auto-gomaxprocs
   - memory-snapshot-on-shutdown
   - new-service-discovery-manager
   - remote-write-receiver
@@ -40,7 +41,7 @@ spec:
   externalLabels:
     cluster: ${PEER_ID}
     env: ${PEER_ENVIRONMENT}
-  image: quay.io/prometheus/prometheus:v2.48.0
+  image: quay.io/prometheus/prometheus:v2.48.1
   nodeSelector:
     kubernetes.io/os: linux
   podMetadata:
@@ -49,7 +50,7 @@ spec:
       app.kubernetes.io/instance: prometheus-peer
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 2.48.0
+      app.kubernetes.io/version: 2.48.1
   podMonitorNamespaceSelector: {}
   podMonitorSelector: {}
   probeNamespaceSelector: {}
@@ -111,4 +112,4 @@ spec:
             storage: ${PEER_PROMETHEUS_VOLUME_SIZE}Gi
   tsdb:
     outOfOrderTimeWindow: 5m
-  version: 2.48.0
+  version: 2.48.1
