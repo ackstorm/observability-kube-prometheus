@@ -45862,7 +45862,7 @@ items:
           },
           "editable": true,
           "fiscalYearStartMonth": 0,
-          "graphTooltip": 0,
+          "graphTooltip": 1,
           "id": 2714,
           "links": [
 
@@ -45923,14 +45923,15 @@ items:
                                       "value": null
                                   }
                               ]
-                          }
+                          },
+                          "unit": "short"
                       },
                       "overrides": [
 
                       ]
                   },
                   "gridPos": {
-                      "h": 8,
+                      "h": 7,
                       "w": 8,
                       "x": 0,
                       "y": 0
@@ -45939,9 +45940,9 @@ items:
                   "options": {
                       "legend": {
                           "calcs": [
-
+                              "sum"
                           ],
-                          "displayMode": "list",
+                          "displayMode": "table",
                           "placement": "bottom",
                           "showLegend": true
                       },
@@ -45957,7 +45958,7 @@ items:
                               "uid": "${datasource_loki}"
                           },
                           "editorMode": "code",
-                          "expr": "sum(count_over_time({app=\"$app\"} |~ \"ERROR|error\" != \"timeout\" [$__auto]))",
+                          "expr": "sum(count_over_time({app=\"$app\"} |~ \"ERROR|error|Exception|exception\" |~ \"$filter\" [$__auto]))",
                           "legendFormat": "ERRORs",
                           "queryType": "range",
                           "refId": "A"
@@ -46020,14 +46021,15 @@ items:
                                       "value": null
                                   }
                               ]
-                          }
+                          },
+                          "unit": "short"
                       },
                       "overrides": [
 
                       ]
                   },
                   "gridPos": {
-                      "h": 8,
+                      "h": 7,
                       "w": 8,
                       "x": 8,
                       "y": 0
@@ -46036,9 +46038,9 @@ items:
                   "options": {
                       "legend": {
                           "calcs": [
-
+                              "sum"
                           ],
-                          "displayMode": "list",
+                          "displayMode": "table",
                           "placement": "bottom",
                           "showLegend": true
                       },
@@ -46054,8 +46056,8 @@ items:
                               "uid": "${datasource_loki}"
                           },
                           "editorMode": "code",
-                          "expr": "sum(count_over_time({app=\"$app\"} |~ \"WARN|warn\" [$__auto]))",
-                          "legendFormat": "ERRORs",
+                          "expr": "sum(count_over_time({app=\"$app\"} |~ \"WARN|warn\" |~ \"$filter\" [$__auto]))",
+                          "legendFormat": "WARNs",
                           "queryType": "range",
                           "refId": "A"
                       }
@@ -46117,14 +46119,15 @@ items:
                                       "value": null
                                   }
                               ]
-                          }
+                          },
+                          "unit": "short"
                       },
                       "overrides": [
 
                       ]
                   },
                   "gridPos": {
-                      "h": 8,
+                      "h": 7,
                       "w": 8,
                       "x": 16,
                       "y": 0
@@ -46133,9 +46136,9 @@ items:
                   "options": {
                       "legend": {
                           "calcs": [
-
+                              "sum"
                           ],
-                          "displayMode": "list",
+                          "displayMode": "table",
                           "placement": "bottom",
                           "showLegend": true
                       },
@@ -46151,8 +46154,8 @@ items:
                               "uid": "${datasource_loki}"
                           },
                           "editorMode": "code",
-                          "expr": "sum(count_over_time({app=\"$app\"}[$__auto]))",
-                          "legendFormat": "ERRORs",
+                          "expr": "sum(count_over_time({app=\"$app\"} |~ \"$filter\" [$__auto]))",
+                          "legendFormat": "All",
                           "queryType": "range",
                           "refId": "A"
                       }
@@ -46166,17 +46169,17 @@ items:
                       "uid": "${datasource_loki}"
                   },
                   "gridPos": {
-                      "h": 13,
+                      "h": 14,
                       "w": 24,
                       "x": 0,
-                      "y": 8
+                      "y": 7
                   },
                   "id": 31,
                   "options": {
-                      "dedupStrategy": "none",
+                      "dedupStrategy": "exact",
                       "enableLogDetails": true,
                       "prettifyLogMessage": false,
-                      "showCommonLabels": false,
+                      "showCommonLabels": true,
                       "showLabels": false,
                       "showTime": true,
                       "sortOrder": "Descending",
@@ -46189,7 +46192,7 @@ items:
                               "uid": "${datasource_loki}"
                           },
                           "editorMode": "code",
-                          "expr": "{app=\"$app\"}",
+                          "expr": "{app=\"$app\"} |~ \"$filter\"",
                           "queryType": "range",
                           "refId": "A"
                       }
@@ -46209,8 +46212,8 @@ items:
                   {
                       "current": {
                           "selected": false,
-                          "text": "metrics-pro-ctt-observability",
-                          "value": "metrics-pro-ctt-observability"
+                          "text": "metrics-pro-core-01",
+                          "value": "metrics-pro-core-01"
                       },
                       "hide": 0,
                       "includeAll": false,
@@ -46230,8 +46233,8 @@ items:
                   {
                       "current": {
                           "selected": false,
-                          "text": "logs-pro-ctt-observability",
-                          "value": "logs-pro-ctt-observability"
+                          "text": "logs-pro-core-01",
+                          "value": "logs-pro-core-01"
                       },
                       "datasource": {
                           "type": "prometheus",
@@ -46259,8 +46262,8 @@ items:
                   {
                       "current": {
                           "selected": false,
-                          "text": "pro-ctt-observability",
-                          "value": "pro-ctt-observability"
+                          "text": "pro-core-01",
+                          "value": "pro-core-01"
                       },
                       "datasource": {
                           "uid": "${datasource}"
@@ -46287,8 +46290,8 @@ items:
                   {
                       "current": {
                           "selected": false,
-                          "text": "observability",
-                          "value": "observability"
+                          "text": "production",
+                          "value": "production"
                       },
                       "datasource": {
                           "type": "prometheus",
@@ -46316,9 +46319,9 @@ items:
                   },
                   {
                       "current": {
-                          "selected": false,
-                          "text": "ackstorm-dashy",
-                          "value": "ackstorm-dashy"
+                          "selected": true,
+                          "text": "adt-service",
+                          "value": "adt-service"
                       },
                       "datasource": {
                           "type": "prometheus",
@@ -46455,6 +46458,27 @@ items:
                       "refresh": 2,
                       "skipUrlSync": false,
                       "type": "interval"
+                  },
+                  {
+                      "current": {
+                          "selected": false,
+                          "text": "",
+                          "value": ""
+                      },
+                      "description": "All your regex filter",
+                      "hide": 0,
+                      "label": "Filter",
+                      "name": "filter",
+                      "options": [
+                          {
+                              "selected": true,
+                              "text": "",
+                              "value": ""
+                          }
+                      ],
+                      "query": "",
+                      "skipUrlSync": false,
+                      "type": "textbox"
                   }
               ]
           },
@@ -46468,7 +46492,7 @@ items:
           "timezone": "",
           "title": "Observability - logs",
           "uid": "cdhlp82t6xhc0e",
-          "version": 4,
+          "version": 5,
           "weekStart": ""
       }
   kind: ConfigMap
