@@ -45822,7 +45822,7 @@ items:
                           "type": "prometheus",
                           "uid": "${datasource}"
                       },
-                      "enable": true,
+                      "enable": false,
                       "hide": true,
                       "iconColor": "rgba(0, 211, 255, 1)",
                       "name": "Annotations & Alerts",
@@ -45863,7 +45863,7 @@ items:
           "editable": true,
           "fiscalYearStartMonth": 0,
           "graphTooltip": 1,
-          "id": 2714,
+          "id": 181,
           "links": [
 
           ],
@@ -45958,7 +45958,7 @@ items:
                               "uid": "${datasource_loki}"
                           },
                           "editorMode": "code",
-                          "expr": "sum(count_over_time({app=\"$app\"} |~ \"ERROR|error|Exception|exception\" |~ \"$filter\" [$__auto]))",
+                          "expr": "sum(count_over_time({namespace=\"$namespace\", app=\"$app\", component=\"$component\"} |~ \"ERROR|error|Error|EXCEPTION|Exception|exception\" |~ \"$filter\" [$__auto]))",
                           "legendFormat": "ERRORs",
                           "queryType": "range",
                           "refId": "A"
@@ -46056,7 +46056,7 @@ items:
                               "uid": "${datasource_loki}"
                           },
                           "editorMode": "code",
-                          "expr": "sum(count_over_time({app=\"$app\"} |~ \"WARN|warn\" |~ \"$filter\" [$__auto]))",
+                          "expr": "sum(count_over_time({namespace=\"$namespace\", app=\"$app\", component=\"$component\"} |~ \"WARN|warn|Warn\" |~ \"$filter\" [$__auto]))",
                           "legendFormat": "WARNs",
                           "queryType": "range",
                           "refId": "A"
@@ -46154,7 +46154,7 @@ items:
                               "uid": "${datasource_loki}"
                           },
                           "editorMode": "code",
-                          "expr": "sum(count_over_time({app=\"$app\"} |~ \"$filter\" [$__auto]))",
+                          "expr": "sum(count_over_time({namespace=\"$namespace\", app=\"$app\", component=\"$component\"} |~ \"$filter\" [$__auto]))",
                           "legendFormat": "All",
                           "queryType": "range",
                           "refId": "A"
@@ -46192,7 +46192,7 @@ items:
                               "uid": "${datasource_loki}"
                           },
                           "editorMode": "code",
-                          "expr": "{app=\"$app\"} |~ \"$filter\"",
+                          "expr": "{namespace=\"$namespace\", app=\"$app\", component=\"$component\"} |~ \"$filter\"",
                           "queryType": "range",
                           "refId": "A"
                       }
@@ -46203,7 +46203,7 @@ items:
           ],
           "refresh": "5m",
           "revision": 1,
-          "schemaVersion": 39,
+          "schemaVersion": 38,
           "tags": [
 
           ],
@@ -46211,19 +46211,19 @@ items:
               "list": [
                   {
                       "current": {
-                          "selected": false,
-                          "text": "metrics-pro-core-01",
-                          "value": "metrics-pro-core-01"
+                          "selected": true,
+                          "text": "logs-dev-core-peer",
+                          "value": "logs-dev-core-peer"
                       },
                       "hide": 0,
                       "includeAll": false,
                       "label": "Data Source",
                       "multi": false,
-                      "name": "datasource",
+                      "name": "datasource_loki",
                       "options": [
 
                       ],
-                      "query": "prometheus",
+                      "query": "loki",
                       "queryValue": "",
                       "refresh": 1,
                       "regex": "",
@@ -46232,72 +46232,15 @@ items:
                   },
                   {
                       "current": {
-                          "selected": false,
-                          "text": "logs-pro-core-01",
-                          "value": "logs-pro-core-01"
+                          "selected": true,
+                          "text": "frontwave-test",
+                          "value": "frontwave-test"
                       },
                       "datasource": {
-                          "type": "prometheus",
-                          "uid": "${datasource}"
+                          "type": "loki",
+                          "uid": "${datasource_loki}"
                       },
-                      "definition": "query_result(label_replace(up{job=\"kube-state-metrics\"}, \"datasource\", \"logs-$1\", \"cluster\", \"(.*)\"))",
-                      "hide": 2,
-                      "includeAll": false,
-                      "label": "",
-                      "multi": false,
-                      "name": "datasource_loki",
-                      "options": [
-
-                      ],
-                      "query": {
-                          "query": "query_result(label_replace(up{job=\"kube-state-metrics\"}, \"datasource\", \"logs-$1\", \"cluster\", \"(.*)\"))",
-                          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-                      },
-                      "refresh": 1,
-                      "regex": "/.*datasource=\\\"(.*?)\\\".*/",
-                      "skipUrlSync": false,
-                      "sort": 0,
-                      "type": "query"
-                  },
-                  {
-                      "current": {
-                          "selected": false,
-                          "text": "pro-core-01",
-                          "value": "pro-core-01"
-                      },
-                      "datasource": {
-                          "uid": "${datasource}"
-                      },
-                      "definition": "label_values(up{job=\"kubelet\"},cluster)",
-                      "hide": 2,
-                      "includeAll": false,
-                      "label": "cluster",
-                      "multi": false,
-                      "name": "cluster",
-                      "options": [
-
-                      ],
-                      "query": {
-                          "query": "label_values(up{job=\"kubelet\"},cluster)",
-                          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-                      },
-                      "refresh": 2,
-                      "regex": "",
-                      "skipUrlSync": false,
-                      "sort": 1,
-                      "type": "query"
-                  },
-                  {
-                      "current": {
-                          "selected": false,
-                          "text": "production",
-                          "value": "production"
-                      },
-                      "datasource": {
-                          "type": "prometheus",
-                          "uid": "${datasource}"
-                      },
-                      "definition": "label_values(container_cpu_usage_seconds_total,namespace)",
+                      "definition": "",
                       "hide": 0,
                       "includeAll": false,
                       "label": "Namespace",
@@ -46307,27 +46250,28 @@ items:
 
                       ],
                       "query": {
-                          "qryType": 1,
-                          "query": "label_values(container_cpu_usage_seconds_total,namespace)",
-                          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+                          "label": "namespace",
+                          "refId": "LokiVariableQueryEditor-VariableQuery",
+                          "stream": "",
+                          "type": 1
                       },
                       "refresh": 1,
                       "regex": "",
                       "skipUrlSync": false,
-                      "sort": 0,
+                      "sort": 1,
                       "type": "query"
                   },
                   {
                       "current": {
                           "selected": true,
-                          "text": "adt-service",
-                          "value": "adt-service"
+                          "text": "ubiware",
+                          "value": "ubiware"
                       },
                       "datasource": {
-                          "type": "prometheus",
-                          "uid": "${datasource}"
+                          "type": "loki",
+                          "uid": "${datasource_loki}"
                       },
-                      "definition": "label_values(kube_deployment_labels{namespace=\"$namespace\"},app)",
+                      "definition": "",
                       "hide": 0,
                       "includeAll": false,
                       "label": "App",
@@ -46337,38 +46281,43 @@ items:
 
                       ],
                       "query": {
-                          "qryType": 1,
-                          "query": "label_values(kube_deployment_labels{namespace=\"$namespace\"},app)",
-                          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+                          "label": "app",
+                          "refId": "LokiVariableQueryEditor-VariableQuery",
+                          "stream": "{namespace=\"$namespace\"}",
+                          "type": 1
                       },
                       "refresh": 1,
                       "regex": "",
                       "skipUrlSync": false,
-                      "sort": 0,
+                      "sort": 1,
                       "type": "query"
                   },
                   {
                       "current": {
-                          "selected": false,
-                          "text": "All",
-                          "value": "$__all"
+                          "selected": true,
+                          "text": "ubiware-tier1-workflows",
+                          "value": "ubiware-tier1-workflows"
                       },
                       "datasource": {
-                          "uid": "${datasource}"
+                          "type": "loki",
+                          "uid": "${datasource_loki}"
                       },
-                      "definition": "label_values(kubelet_runtime_operations_total{cluster=\"$cluster\", job=\"kubelet\"},instance)",
-                      "hide": 2,
-                      "includeAll": true,
+                      "definition": "",
+                      "hide": 0,
+                      "includeAll": false,
+                      "label": "Component",
                       "multi": false,
-                      "name": "instance",
+                      "name": "component",
                       "options": [
 
                       ],
                       "query": {
-                          "query": "label_values(kubelet_runtime_operations_total{cluster=\"$cluster\", job=\"kubelet\"},instance)",
-                          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+                          "label": "component",
+                          "refId": "LokiVariableQueryEditor-VariableQuery",
+                          "stream": "{namespace=\"$namespace\",app=\"$app\"}",
+                          "type": 1
                       },
-                      "refresh": 2,
+                      "refresh": 1,
                       "regex": "",
                       "skipUrlSync": false,
                       "sort": 1,
@@ -46491,8 +46440,8 @@ items:
           },
           "timezone": "",
           "title": "Observability - logs",
-          "uid": "cdhlp82t6xhc0e",
-          "version": 5,
+          "uid": "cdhlp82t6xhc0ea",
+          "version": 2,
           "weekStart": ""
       }
   kind: ConfigMap
