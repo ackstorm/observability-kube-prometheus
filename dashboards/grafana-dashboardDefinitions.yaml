@@ -8402,6 +8402,1714 @@ items:
     namespace: observability
 - apiVersion: v1
   data:
+    k8s-ackstorm-event-exporter.json: |-
+      {
+          "annotations": {
+              "list": [
+                  {
+                      "builtIn": 1,
+                      "datasource": {
+                          "type": "datasource",
+                          "uid": "grafana"
+                      },
+                      "enable": true,
+                      "hide": true,
+                      "iconColor": "rgba(0, 211, 255, 1)",
+                      "name": "Annotations & Alerts",
+                      "target": {
+                          "limit": 100,
+                          "matchAny": false,
+                          "tags": [
+
+                          ],
+                          "type": "dashboard"
+                      },
+                      "type": "dashboard"
+                  }
+              ]
+          },
+          "description": "Kubernetes Event Exporter - https://github.com/resmoio/kubernetes-event-exporter",
+          "editable": true,
+          "fiscalYearStartMonth": 0,
+          "gnetId": 17882,
+          "graphTooltip": 0,
+          "id": 1247,
+          "links": [
+
+          ],
+          "liveNow": false,
+          "panels": [
+              {
+                  "collapsed": false,
+                  "gridPos": {
+                      "h": 1,
+                      "w": 24,
+                      "x": 0,
+                      "y": 0
+                  },
+                  "id": 30,
+                  "panels": [
+
+                  ],
+                  "title": "Kubernetes Events - Distribution",
+                  "type": "row"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "description": "",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              }
+                          },
+                          "mappings": [
+
+                          ]
+                      },
+                      "overrides": [
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Field"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "color",
+                                      "value": {
+                                          "mode": "thresholds"
+                                      }
+                                  },
+                                  {
+                                      "id": "displayName",
+                                      "value": "Reason"
+                                  },
+                                  {
+                                      "id": "color",
+                                      "value": {
+                                          "fixedColor": "#eab839",
+                                          "mode": "fixed"
+                                      }
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Total"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "color",
+                                      "value": {
+                                          "mode": "continuous-BlYlRd"
+                                      }
+                                  }
+                              ]
+                          },
+                          {
+                              "__systemRef": "hideSeriesFrom",
+                              "matcher": {
+                                  "id": "byNames",
+                                  "options": {
+                                      "mode": "exclude",
+                                      "names": [
+                                          "Completed",
+                                          "Created",
+                                          "FreeDiskSpaceFailed",
+                                          "InProgress",
+                                          "JobAlreadyActive",
+                                          "Killing",
+                                          "Pulled",
+                                          "Pulling",
+                                          "SawCompletedJob",
+                                          "Scheduled",
+                                          "SnapshotDelete",
+                                          "SnapshotError",
+                                          "SnapshotUpdate",
+                                          "Started",
+                                          "SuccessfulCreate",
+                                          "SuccessfulDelete",
+                                          "Unhealthy",
+                                          "Valid",
+                                          "nodeAssigned",
+                                          "unchanged",
+                                          "Value"
+                                      ],
+                                      "prefix": "All except:",
+                                      "readOnly": true
+                                  }
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.hideFrom",
+                                      "value": {
+                                          "legend": false,
+                                          "tooltip": false,
+                                          "viz": true
+                                      }
+                                  }
+                              ]
+                          }
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 9,
+                      "w": 6,
+                      "x": 0,
+                      "y": 1
+                  },
+                  "id": 26,
+                  "interval": "1m",
+                  "options": {
+                      "legend": {
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "pieType": "pie",
+                      "reduceOptions": {
+                          "calcs": [
+                              "sum"
+                          ],
+                          "fields": "",
+                          "values": false
+                      },
+                      "tooltip": {
+                          "maxHeight": 600,
+                          "mode": "multi",
+                          "sort": "none"
+                      }
+                  },
+                  "pluginVersion": "9.3.1",
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum by (reason) (count_over_time({container=\"event-exporter\"} | json | __error__=`` | metadata_namespace=~`$namespace` [$__interval]))",
+                          "instant": false,
+                          "legendFormat": "{{reason}}",
+                          "queryType": "range",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Events by Reason",
+                  "type": "piechart"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              }
+                          },
+                          "mappings": [
+
+                          ]
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 9,
+                      "w": 6,
+                      "x": 6,
+                      "y": 1
+                  },
+                  "id": 28,
+                  "interval": "1m",
+                  "options": {
+                      "displayLabels": [
+
+                      ],
+                      "legend": {
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "pieType": "pie",
+                      "reduceOptions": {
+                          "calcs": [
+                              "sum"
+                          ],
+                          "fields": "",
+                          "values": false
+                      },
+                      "tooltip": {
+                          "maxHeight": 600,
+                          "mode": "multi",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum by (metadata_namespace) (count_over_time({container=\"event-exporter\"} | json | __error__=`` | metadata_namespace=~`$namespace` [$__interval]))",
+                          "legendFormat": "{{metadata_namespace}}",
+                          "queryType": "range",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Events by Namespace",
+                  "type": "piechart"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              }
+                          },
+                          "mappings": [
+
+                          ]
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 9,
+                      "w": 6,
+                      "x": 12,
+                      "y": 1
+                  },
+                  "id": 20,
+                  "interval": "1m",
+                  "options": {
+                      "legend": {
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "pieType": "pie",
+                      "reduceOptions": {
+                          "calcs": [
+                              "sum"
+                          ],
+                          "fields": "",
+                          "values": false
+                      },
+                      "tooltip": {
+                          "maxHeight": 600,
+                          "mode": "multi",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum by (source_component) (count_over_time({container=\"event-exporter\"} | json | __error__=`` | metadata_namespace=~`$namespace` [$__interval]))",
+                          "legendFormat": "{{source_component}}",
+                          "queryType": "range",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Events by Source",
+                  "type": "piechart"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              }
+                          },
+                          "links": [
+
+                          ],
+                          "mappings": [
+
+                          ]
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 9,
+                      "w": 6,
+                      "x": 18,
+                      "y": 1
+                  },
+                  "id": 22,
+                  "interval": "1m",
+                  "options": {
+                      "legend": {
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true,
+                          "values": [
+
+                          ]
+                      },
+                      "pieType": "pie",
+                      "reduceOptions": {
+                          "calcs": [
+                              "sum"
+                          ],
+                          "fields": "",
+                          "values": false
+                      },
+                      "tooltip": {
+                          "maxHeight": 600,
+                          "mode": "multi",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum by (involvedObject_kind) (count_over_time({container=\"event-exporter\"} | json | __error__=`` | metadata_namespace=~`$namespace` [$__interval]))",
+                          "legendFormat": "{{involvedObject_kind}}",
+                          "queryType": "range",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Events by Kind",
+                  "type": "piechart"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisBorderShow": false,
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "left",
+                              "barAlignment": 0,
+                              "drawStyle": "bars",
+                              "fillOpacity": 100,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "insertNulls": false,
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": false,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "normal"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 7,
+                      "w": 12,
+                      "x": 0,
+                      "y": 10
+                  },
+                  "id": 2,
+                  "interval": "1m",
+                  "options": {
+                      "legend": {
+                          "calcs": [
+
+                          ],
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "maxHeight": 600,
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum by (type) (count_over_time({container=\"event-exporter\"} | json | __error__=`` | metadata_namespace=~`$namespace` [$__interval]))",
+                          "legendFormat": "{{type}}",
+                          "queryType": "range",
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Overview",
+                  "type": "timeseries"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisBorderShow": false,
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 29,
+                              "gradientMode": "hue",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "insertNulls": false,
+                              "lineInterpolation": "smooth",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": true,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "red",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 1
+                                  }
+                              ]
+                          },
+                          "unit": "short"
+                      },
+                      "overrides": [
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Warning"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "color",
+                                      "value": {
+                                          "fixedColor": "red",
+                                          "mode": "fixed"
+                                      }
+                                  }
+                              ]
+                          }
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 7,
+                      "w": 12,
+                      "x": 12,
+                      "y": 10
+                  },
+                  "id": 4,
+                  "interval": "1m",
+                  "options": {
+                      "legend": {
+                          "calcs": [
+                              "sum"
+                          ],
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "maxHeight": 600,
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(count_over_time({container=\"event-exporter\"} | json | __error__=`` | metadata_namespace=~`$namespace` | type=\"Warning\" [$__interval]))",
+                          "legendFormat": "Warning",
+                          "queryType": "range",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Warnings",
+                  "type": "timeseries"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "thresholds"
+                          },
+                          "mappings": [
+
+                          ],
+                          "noValue": "0",
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "yellow",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "yellow",
+                                      "value": 0
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 5,
+                      "w": 3,
+                      "x": 0,
+                      "y": 17
+                  },
+                  "id": 6,
+                  "interval": "1m",
+                  "options": {
+                      "colorMode": "value",
+                      "graphMode": "area",
+                      "justifyMode": "auto",
+                      "orientation": "auto",
+                      "reduceOptions": {
+                          "calcs": [
+                              "last"
+                          ],
+                          "fields": "",
+                          "values": false
+                      },
+                      "showPercentChange": false,
+                      "text": {
+
+                      },
+                      "textMode": "auto",
+                      "wideLayout": true
+                  },
+                  "pluginVersion": "11.0.0-preview",
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(count_over_time({container=\"event-exporter\"} |= \"Error: ImagePullBackOff\" | json | __error__=`` | metadata_namespace=~`$namespace` | reason=\"Failed\"  | line_format \"{{ .message }}\" [$__interval]))",
+                          "legendFormat": "",
+                          "queryType": "range",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Image Pull Failed",
+                  "type": "stat"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "thresholds"
+                          },
+                          "mappings": [
+
+                          ],
+                          "noValue": "0",
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "yellow",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "yellow",
+                                      "value": 0
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 5,
+                      "w": 3,
+                      "x": 3,
+                      "y": 17
+                  },
+                  "id": 14,
+                  "interval": "1m",
+                  "options": {
+                      "colorMode": "value",
+                      "graphMode": "area",
+                      "justifyMode": "auto",
+                      "orientation": "auto",
+                      "reduceOptions": {
+                          "calcs": [
+                              "last"
+                          ],
+                          "fields": "",
+                          "values": false
+                      },
+                      "showPercentChange": false,
+                      "text": {
+
+                      },
+                      "textMode": "auto",
+                      "wideLayout": true
+                  },
+                  "pluginVersion": "11.0.0-preview",
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(count_over_time({container=\"event-exporter\"} |= \"failed liveness probe\" | json | __error__=`` | metadata_namespace=~`$namespace` | reason=\"Killing\" [$__interval]))",
+                          "queryType": "range",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Liveness Probe Failed",
+                  "type": "stat"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "thresholds"
+                          },
+                          "mappings": [
+
+                          ],
+                          "noValue": "0",
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "yellow",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "yellow",
+                                      "value": 0
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 5,
+                      "w": 3,
+                      "x": 6,
+                      "y": 17
+                  },
+                  "id": 41,
+                  "interval": "1m",
+                  "options": {
+                      "colorMode": "value",
+                      "graphMode": "area",
+                      "justifyMode": "auto",
+                      "orientation": "auto",
+                      "reduceOptions": {
+                          "calcs": [
+                              "last"
+                          ],
+                          "fields": "",
+                          "values": false
+                      },
+                      "showPercentChange": false,
+                      "text": {
+
+                      },
+                      "textMode": "auto",
+                      "wideLayout": true
+                  },
+                  "pluginVersion": "11.0.0-preview",
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(count_over_time({container=\"event-exporter\"} | json | __error__=`` | metadata_namespace=~`$namespace` | reason=\"FailedMount\" [$__interval]))",
+                          "queryType": "range",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Volume Mount Failed",
+                  "type": "stat"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "thresholds"
+                          },
+                          "mappings": [
+
+                          ],
+                          "noValue": "0",
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "yellow",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "yellow",
+                                      "value": 0
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 5,
+                      "w": 3,
+                      "x": 9,
+                      "y": 17
+                  },
+                  "id": 16,
+                  "interval": "1m",
+                  "options": {
+                      "colorMode": "value",
+                      "graphMode": "area",
+                      "justifyMode": "auto",
+                      "orientation": "auto",
+                      "reduceOptions": {
+                          "calcs": [
+                              "last"
+                          ],
+                          "fields": "",
+                          "values": false
+                      },
+                      "showPercentChange": false,
+                      "text": {
+                          "valueSize": 0
+                      },
+                      "textMode": "auto",
+                      "wideLayout": true
+                  },
+                  "pluginVersion": "11.0.0-preview",
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(count_over_time({container=\"event-exporter\"} | json | __error__=`` | metadata_namespace=~`$namespace` | reason=\"FailedScheduling\" [$__interval]))",
+                          "queryType": "range",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Scheduling Failed",
+                  "type": "stat"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "thresholds"
+                          },
+                          "mappings": [
+
+                          ],
+                          "noValue": "0",
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "yellow",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "yellow",
+                                      "value": 0
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 5,
+                      "w": 3,
+                      "x": 12,
+                      "y": 17
+                  },
+                  "id": 10,
+                  "interval": "1m",
+                  "options": {
+                      "colorMode": "value",
+                      "graphMode": "area",
+                      "justifyMode": "auto",
+                      "orientation": "auto",
+                      "reduceOptions": {
+                          "calcs": [
+                              "last"
+                          ],
+                          "fields": "",
+                          "values": false
+                      },
+                      "showPercentChange": false,
+                      "text": {
+
+                      },
+                      "textMode": "auto",
+                      "wideLayout": true
+                  },
+                  "pluginVersion": "11.0.0-preview",
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(count_over_time({container=\"event-exporter\"} | json | __error__=`` | metadata_namespace=~`$namespace` | reason=\"OOMKilling\" [$__interval]))",
+                          "queryType": "range",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Container OOM Killed",
+                  "type": "stat"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "mappings": [
+
+                          ],
+                          "noValue": "0",
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "yellow",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "yellow",
+                                      "value": 0
+                                  }
+                              ]
+                          },
+                          "unit": "short"
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 5,
+                      "w": 3,
+                      "x": 15,
+                      "y": 17
+                  },
+                  "id": 12,
+                  "interval": "1m",
+                  "options": {
+                      "colorMode": "value",
+                      "graphMode": "area",
+                      "justifyMode": "auto",
+                      "orientation": "auto",
+                      "reduceOptions": {
+                          "calcs": [
+                              "last"
+                          ],
+                          "fields": "",
+                          "values": false
+                      },
+                      "showPercentChange": false,
+                      "textMode": "auto",
+                      "wideLayout": true
+                  },
+                  "pluginVersion": "11.0.0-preview",
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(count_over_time({container=\"event-exporter\"} | json | __error__=`` | metadata_namespace=~`$namespace` | reason=\"BackOff\" [$__interval]))",
+                          "queryType": "range",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Container Crashed",
+                  "type": "stat"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "thresholds"
+                          },
+                          "mappings": [
+
+                          ],
+                          "noValue": "0",
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "yellow",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "yellow",
+                                      "value": 0
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 5,
+                      "w": 3,
+                      "x": 18,
+                      "y": 17
+                  },
+                  "id": 18,
+                  "interval": "1m",
+                  "options": {
+                      "colorMode": "value",
+                      "graphMode": "area",
+                      "justifyMode": "auto",
+                      "orientation": "auto",
+                      "reduceOptions": {
+                          "calcs": [
+                              "last"
+                          ],
+                          "fields": "",
+                          "values": false
+                      },
+                      "showPercentChange": false,
+                      "text": {
+
+                      },
+                      "textMode": "auto",
+                      "wideLayout": true
+                  },
+                  "pluginVersion": "11.0.0-preview",
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(count_over_time({container=\"event-exporter\"} |= \"Marking for deletion Pod\" | json | __error__=`` | metadata_namespace=~`$namespace` | reason=\"TaintManagerEviction\" [$__interval]))",
+                          "queryType": "range",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Pod Evicted",
+                  "type": "stat"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "mappings": [
+
+                          ],
+                          "noValue": "0",
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "yellow",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "yellow",
+                                      "value": 0
+                                  }
+                              ]
+                          },
+                          "unit": "short"
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 5,
+                      "w": 3,
+                      "x": 21,
+                      "y": 17
+                  },
+                  "id": 40,
+                  "interval": "1m",
+                  "options": {
+                      "colorMode": "value",
+                      "graphMode": "area",
+                      "justifyMode": "auto",
+                      "orientation": "auto",
+                      "reduceOptions": {
+                          "calcs": [
+                              "last"
+                          ],
+                          "fields": "",
+                          "values": false
+                      },
+                      "showPercentChange": false,
+                      "textMode": "auto",
+                      "wideLayout": true
+                  },
+                  "pluginVersion": "11.0.0-preview",
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(count_over_time({container=\"event-exporter\"} | json | __error__=`` | metadata_namespace=~`$namespace` | reason=\"SystemOOM\" [$__interval]))",
+                          "queryType": "range",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "System OOM",
+                  "type": "stat"
+              },
+              {
+                  "collapsed": false,
+                  "gridPos": {
+                      "h": 1,
+                      "w": 24,
+                      "x": 0,
+                      "y": 22
+                  },
+                  "id": 34,
+                  "panels": [
+
+                  ],
+                  "title": "Kubernetes Events - Details",
+                  "type": "row"
+              },
+              {
+                  "datasource": {
+                      "type": "loki",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "thresholds"
+                          },
+                          "custom": {
+                              "align": "auto",
+                              "cellOptions": {
+                                  "type": "auto"
+                              },
+                              "filterable": true,
+                              "inspect": false,
+                              "minWidth": 65
+                          },
+                          "links": [
+
+                          ],
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "labels"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.filterable"
+                                  },
+                                  {
+                                      "id": "custom.inspect",
+                                      "value": true
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "type"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "mappings",
+                                      "value": [
+                                          {
+                                              "options": {
+                                                  "Normal": {
+                                                      "color": "text",
+                                                      "index": 1
+                                                  },
+                                                  "Warning": {
+                                                      "color": "red",
+                                                      "index": 0
+                                                  }
+                                              },
+                                              "type": "value"
+                                          }
+                                      ]
+                                  },
+                                  {
+                                      "id": "custom.cellOptions",
+                                      "value": {
+                                          "type": "color-text"
+                                      }
+                                  },
+                                  {
+                                      "id": "custom.width",
+                                      "value": 66
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "message"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.minWidth",
+                                      "value": 280
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "involvedObject_name"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.minWidth",
+                                      "value": 245
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "count"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.width",
+                                      "value": 55
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byType",
+                                  "options": "time"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.filterable",
+                                      "value": false
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "dateTimeFromNow"
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "lastTimestamp"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.filterable"
+                                  }
+                              ]
+                          }
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 13,
+                      "w": 24,
+                      "x": 0,
+                      "y": 23
+                  },
+                  "id": 36,
+                  "options": {
+                      "cellHeight": "sm",
+                      "footer": {
+                          "countRows": false,
+                          "enablePagination": true,
+                          "fields": "",
+                          "reducer": [
+                              "sum"
+                          ],
+                          "show": false
+                      },
+                      "showHeader": true,
+                      "sortBy": [
+
+                      ]
+                  },
+                  "pluginVersion": "11.0.0-preview",
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "{container=\"event-exporter\"} |~ `(?i)$contains` | json | __error__=`` | metadata_namespace=~`$namespace`",
+                          "queryType": "range",
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Events Details",
+                  "transformations": [
+                      {
+                          "id": "extractFields",
+                          "options": {
+                              "replace": false,
+                              "source": "labels"
+                          }
+                      },
+                      {
+                          "id": "filterFieldsByName",
+                          "options": {
+                              "include": {
+                                  "pattern": "/^(labels|type|message|metadata_namespace|involvedObject_kind|involvedObject_name|source_component|count|metadata_creationTimestamp|firstTimestamp|lastTimestamp)$/"
+                              }
+                          }
+                      },
+                      {
+                          "id": "organize",
+                          "options": {
+                              "excludeByName": {
+                                  "firstTimestamp": true
+                              },
+                              "indexByName": {
+                                  "count": 7,
+                                  "firstTimestamp": 9,
+                                  "involvedObject_kind": 4,
+                                  "involvedObject_name": 5,
+                                  "labels": 0,
+                                  "lastTimestamp": 10,
+                                  "message": 2,
+                                  "metadata_creationTimestamp": 8,
+                                  "metadata_namespace": 3,
+                                  "source_component": 6,
+                                  "type": 1
+                              },
+                              "renameByName": {
+                                  "count": "Count",
+                                  "firstTimestamp": "Age",
+                                  "involvedObject_kind": "Kind",
+                                  "involvedObject_name": "Involved Object",
+                                  "labels": "Full event",
+                                  "lastTimestamp": "Last Seen",
+                                  "message": "Message",
+                                  "metadata_creationTimestamp": "Created",
+                                  "metadata_namespace": "Namespace",
+                                  "source_component": "Source",
+                                  "type": "Type"
+                              }
+                          }
+                      },
+                      {
+                          "id": "convertFieldType",
+                          "options": {
+                              "conversions": [
+                                  {
+                                      "destinationType": "time",
+                                      "targetField": "metadata_creationTimestamp"
+                                  }
+                              ],
+                              "fields": {
+
+                              }
+                          }
+                      },
+                      {
+                          "id": "sortBy",
+                          "options": {
+                              "fields": {
+
+                              },
+                              "sort": [
+                                  {
+                                      "desc": true,
+                                      "field": "Last Seen"
+                                  }
+                              ]
+                          }
+                      }
+                  ],
+                  "type": "table"
+              },
+              {
+                  "collapsed": true,
+                  "gridPos": {
+                      "h": 1,
+                      "w": 24,
+                      "x": 0,
+                      "y": 36
+                  },
+                  "id": 38,
+                  "panels": [
+                      {
+                          "datasource": {
+                              "type": "loki",
+                              "uid": "${datasource}"
+                          },
+                          "gridPos": {
+                              "h": 13,
+                              "w": 24,
+                              "x": 0,
+                              "y": 30
+                          },
+                          "id": 8,
+                          "options": {
+                              "dedupStrategy": "none",
+                              "enableLogDetails": true,
+                              "prettifyLogMessage": false,
+                              "showCommonLabels": false,
+                              "showLabels": false,
+                              "showTime": true,
+                              "sortOrder": "Descending",
+                              "wrapLogMessage": false
+                          },
+                          "targets": [
+                              {
+                                  "datasource": {
+                                      "type": "loki",
+                                      "uid": "${datasource}"
+                                  },
+                                  "editorMode": "code",
+                                  "expr": "{container=\"event-exporter\"} |~ `(?i)$contains` | json | __error__=`` | metadata_namespace=~`$namespace`",
+                                  "queryType": "range",
+                                  "range": true,
+                                  "refId": "A"
+                              }
+                          ],
+                          "type": "logs"
+                      }
+                  ],
+                  "title": "Kubernetes Events - Raw Logs",
+                  "type": "row"
+              }
+          ],
+          "refresh": "1m",
+          "schemaVersion": 39,
+          "tags": [
+              "loki"
+          ],
+          "templating": {
+              "list": [
+                  {
+                      "current": {
+                          "selected": true,
+                          "text": "logs-demo-observability-aws",
+                          "value": "logs-demo-observability-aws"
+                      },
+                      "hide": 0,
+                      "includeAll": false,
+                      "label": "datasource",
+                      "multi": false,
+                      "name": "datasource",
+                      "options": [
+
+                      ],
+                      "query": "loki",
+                      "queryValue": "",
+                      "refresh": 1,
+                      "regex": "",
+                      "skipUrlSync": false,
+                      "type": "datasource"
+                  },
+                  {
+                      "allValue": ".*",
+                      "current": {
+                          "selected": true,
+                          "text": [
+                              "All"
+                          ],
+                          "value": [
+                              "$__all"
+                          ]
+                      },
+                      "datasource": {
+                          "type": "loki",
+                          "uid": "${datasource}"
+                      },
+                      "definition": "",
+                      "hide": 0,
+                      "includeAll": true,
+                      "multi": true,
+                      "name": "namespace",
+                      "options": [
+
+                      ],
+                      "query": {
+                          "label": "namespace",
+                          "refId": "LokiVariableQueryEditor-VariableQuery",
+                          "stream": "",
+                          "type": 1
+                      },
+                      "refresh": 2,
+                      "regex": "",
+                      "skipUrlSync": false,
+                      "sort": 5,
+                      "type": "query"
+                  },
+                  {
+                      "current": {
+                          "selected": false,
+                          "text": "",
+                          "value": ""
+                      },
+                      "description": "Line contains case insensitive. Return log lines that match regex (?i)",
+                      "hide": 0,
+                      "label": "Search events",
+                      "name": "contains",
+                      "options": [
+                          {
+                              "selected": true,
+                              "text": "",
+                              "value": ""
+                          }
+                      ],
+                      "query": "",
+                      "skipUrlSync": false,
+                      "type": "textbox"
+                  }
+              ]
+          },
+          "time": {
+              "from": "now-1h",
+              "to": "now"
+          },
+          "timeRangeUpdatedDuringEditOrView": false,
+          "timepicker": {
+              "refresh_intervals": [
+                  "10s",
+                  "30s",
+                  "1m",
+                  "5m",
+                  "15m",
+                  "30m",
+                  "1h",
+                  "2h",
+                  "1d"
+              ]
+          },
+          "timezone": "",
+          "title": "Kubernetes Event Exporter",
+          "uid": "kubernetes-event-exporter",
+          "version": 1,
+          "weekStart": ""
+      }
+  kind: ConfigMap
+  metadata:
+    annotations:
+      argocd.argoproj.io/sync-option: Replace=true
+      k8s-sidecar-target-directory: 040 - Platform Layer - Kubernetes (ackstorm)
+      kustomize.toolkit.fluxcd.io/substitute: disabled
+    labels:
+      app.kubernetes.io/component: grafana
+      app.kubernetes.io/name: grafana
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 10.2.2
+      grafana_dashboard: "1"
+    name: grafana-dashboard-k8s-ackstorm-event-exporter
+    namespace: observability
+- apiVersion: v1
+  data:
     k8s-ackstorm-kubernetes-overview.json: |-
       {
           "annotations": {
@@ -58159,7 +59867,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "${datasource}"
                   },
                   "description": "Otel Collector Instance",
                   "fieldConfig": {
@@ -58217,7 +59925,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "${datasource}"
                           },
                           "editorMode": "code",
                           "expr": "count(count(otelcol_process_cpu_seconds{service_instance_id=~\".*\"}) by (service_instance_id))",
@@ -58232,7 +59940,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "otelcol_process_cpu_seconds",
                   "fieldConfig": {
@@ -58290,7 +59998,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "avg(rate(otelcol_process_cpu_seconds{}[5m])*100)",
@@ -58305,7 +60013,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "${datasource}"
                   },
                   "description": "Memory Rss\navg(otelcol_process_memory_rss{}) by (instance)",
                   "fieldConfig": {
@@ -58363,7 +60071,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "${datasource}"
                           },
                           "editorMode": "code",
                           "expr": "avg(otelcol_process_memory_rss{})",
@@ -58378,7 +60086,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "",
                   "gridPos": {
@@ -58418,7 +60126,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "(avg(sum by(job) (rate(otelcol_exporter_sent_spans{}[$__range]))) / avg(sum by(job) (rate(otelcol_receiver_accepted_spans{}[$__range])))) ",
                   "fieldConfig": {
@@ -58493,7 +60201,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -58508,7 +60216,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "avg(sum by(job) (rate(otelcol_receiver_accepted_spans{}[$__range])))",
@@ -58521,7 +60229,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "(avg(sum by(job) (rate(otelcol_exporter_sent_spans{}[$__range]))) / avg(sum by(job) (rate(otelcol_receiver_accepted_spans{}[$__range])))) ",
@@ -58537,7 +60245,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "gridPos": {
                       "h": 11,
@@ -58559,7 +60267,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -58573,7 +60281,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -58591,7 +60299,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "Spans Accepted by Receiver and Transport",
                   "fieldConfig": {
@@ -58647,7 +60355,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "sum(rate(otelcol_receiver_accepted_spans{}[$__rate_interval])) by (receiver,transport)",
@@ -58662,7 +60370,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "Total Spans Accepted ",
                   "fieldConfig": {
@@ -58715,7 +60423,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "sum(rate(otelcol_receiver_accepted_spans{}[$__rate_interval])) ",
@@ -58730,7 +60438,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "Total Batch Processed",
                   "fieldConfig": {
@@ -58792,7 +60500,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "sum(rate(otelcol_processor_batch_batch_send_size_sum{}[$__rate_interval]))  by (processor)",
@@ -58807,7 +60515,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "fieldConfig": {
                       "defaults": {
@@ -58859,7 +60567,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -58877,7 +60585,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "Sent by Exporter",
                   "fieldConfig": {
@@ -58932,7 +60640,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -58950,7 +60658,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "fieldConfig": {
                       "defaults": {
@@ -59005,7 +60713,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "sum(rate(otelcol_receiver_refused_spans{}[$__rate_interval])) by (receiver,transport)",
@@ -59020,7 +60728,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "Total Spans Accepted ",
                   "fieldConfig": {
@@ -59073,7 +60781,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "sum(rate(otelcol_receiver_refused_spans{}[$__rate_interval])) ",
@@ -59088,7 +60796,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "otelcol_exporter_send_failed_spans",
                   "fieldConfig": {
@@ -59141,7 +60849,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -59159,7 +60867,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "Sent by Exporter\notelcol_exporter_send_failed_spans",
                   "fieldConfig": {
@@ -59214,7 +60922,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -59247,7 +60955,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "avg(sum by(job) (rate(otelcol_exporter_sent_metric_points{}[$__range]))) versus avg(sum by(job) (rate(otelcol_receiver_accepted_metric_points{}[$__range])))",
                   "fieldConfig": {
@@ -59263,8 +60971,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "light-blue",
-                                      "value": null
+                                      "color": "light-blue"
                                   },
                                   {
                                       "color": "semi-dark-red",
@@ -59322,7 +61029,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -59337,7 +61044,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "avg(sum by(job) (rate(otelcol_receiver_accepted_metric_points{}[$__range])))",
@@ -59350,7 +61057,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "( avg(sum by(job) (rate(otelcol_exporter_sent_metric_points{}[$__range]))) /avg(sum by(job) (rate(otelcol_receiver_accepted_metric_points{}[$__range]))))",
@@ -59404,7 +61111,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "Metrics Signalling Pipelines",
                   "gridPos": {
@@ -59427,7 +61134,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -59441,7 +61148,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -59459,7 +61166,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "otelcol_receiver_accepted_metric_points",
                   "fieldConfig": {
@@ -59475,8 +61182,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "text",
-                                      "value": null
+                                      "color": "text"
                                   }
                               ]
                           },
@@ -59515,7 +61221,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "sum(rate(otelcol_receiver_accepted_metric_points{}[$__rate_interval])) by (receiver,transport)",
@@ -59530,7 +61236,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "otelcol_receiver_accepted_metric_points\nTotal Accepted ",
                   "fieldConfig": {
@@ -59545,8 +61251,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "text",
-                                      "value": null
+                                      "color": "text"
                                   }
                               ]
                           }
@@ -59583,7 +61288,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "sum(rate(otelcol_receiver_accepted_metric_points{}[$__rate_interval])) ",
@@ -59598,7 +61303,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "fieldConfig": {
                       "defaults": {
@@ -59612,8 +61317,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "#EAB839",
@@ -59659,7 +61363,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "sum(rate(otelcol_processor_batch_batch_send_size_sum{}[$__rate_interval]))  by (processor)",
@@ -59674,7 +61378,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "Total Export ",
                   "fieldConfig": {
@@ -59689,8 +61393,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "text",
-                                      "value": null
+                                      "color": "text"
                                   }
                               ]
                           }
@@ -59727,7 +61430,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -59745,7 +61448,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "Sent by Exporter",
                   "fieldConfig": {
@@ -59760,8 +61463,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "text",
-                                      "value": null
+                                      "color": "text"
                                   }
                               ]
                           },
@@ -59800,7 +61502,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -59818,7 +61520,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "fieldConfig": {
                       "defaults": {
@@ -59833,8 +61535,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "text",
-                                      "value": null
+                                      "color": "text"
                                   }
                               ]
                           },
@@ -59873,7 +61574,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "sum(rate(otelcol_receiver_refused_metric_points{}[$__rate_interval])) by (receiver,transport)",
@@ -59888,7 +61589,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "Total Refused \nsum(rate(otelcol_receiver_refused_metric_points{}[$__rate_interval])) ",
                   "fieldConfig": {
@@ -59903,8 +61604,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "text",
-                                      "value": null
+                                      "color": "text"
                                   }
                               ]
                           }
@@ -59941,7 +61641,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "sum(rate(otelcol_receiver_refused_metric_points{}[$__rate_interval])) ",
@@ -59956,7 +61656,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "Total Failed Export ",
                   "fieldConfig": {
@@ -59971,8 +61671,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "text",
-                                      "value": null
+                                      "color": "text"
                                   }
                               ]
                           }
@@ -60009,7 +61708,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -60027,7 +61726,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "Sent by Exporter\notelcol_exporter_send_failed_spans",
                   "fieldConfig": {
@@ -60042,8 +61741,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "text",
-                                      "value": null
+                                      "color": "text"
                                   }
                               ]
                           },
@@ -60082,7 +61780,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -60115,7 +61813,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "otelcol prometheus exporter 9464 export rate versus prometheus scrape metrics",
                   "fieldConfig": {
@@ -60131,8 +61829,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "light-blue",
-                                      "value": null
+                                      "color": "light-blue"
                                   },
                                   {
                                       "color": "semi-dark-red",
@@ -60190,7 +61887,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -60204,7 +61901,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "expr": "(sum(rate(otelcol_exporter_sent_metric_points{exporter=\"prometheus\"}[$__rate_interval])) )",
@@ -60255,7 +61952,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "sum_over_time(scrape_samples_scraped[$__range])/ count_over_time(scrape_samples_scraped[$__range])",
                   "fieldConfig": {
@@ -60270,8 +61967,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -60313,7 +62009,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -60331,7 +62027,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "scrape_samples_scraped{job!=\"\"}\nTotal Samples Scraped",
                   "fieldConfig": {
@@ -60346,8 +62042,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -60388,7 +62083,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -60423,7 +62118,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "gridPos": {
                       "h": 9,
@@ -60446,7 +62141,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -60461,7 +62156,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "metrics-demo-observability-peer"
+                              "uid": "$datasource"
                           },
                           "editorMode": "code",
                           "exemplar": false,
@@ -60495,7 +62190,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "metrics-demo-observability-peer"
+                      "uid": "$datasource"
                   },
                   "description": "Sent by Exporter",
                   "gridPos": {
@@ -60526,6 +62221,27 @@ items:
           "templating": {
               "list": [
                   {
+                      "current": {
+                          "selected": true,
+                          "text": "metrics-demo-observability-peer",
+                          "value": "metrics-demo-observability-peer"
+                      },
+                      "hide": 0,
+                      "includeAll": false,
+                      "label": "Datasource",
+                      "multi": false,
+                      "name": "datasource",
+                      "options": [
+
+                      ],
+                      "query": "prometheus",
+                      "queryValue": "",
+                      "refresh": 1,
+                      "regex": "",
+                      "skipUrlSync": false,
+                      "type": "datasource"
+                  },
+                  {
                       "allValue": ".*",
                       "current": {
                           "selected": false,
@@ -60534,7 +62250,7 @@ items:
                       },
                       "datasource": {
                           "type": "prometheus",
-                          "uid": "metrics-demo-observability-peer"
+                          "uid": "${datasource}"
                       },
                       "definition": "query_result(sum(otelcol_process_uptime{}) by (service_version))\n",
                       "hide": 2,
@@ -60648,7 +62364,7 @@ items:
           "timezone": "",
           "title": "Opentelemetry / Data Flow",
           "uid": "rl5_tea4k",
-          "version": 2,
+          "version": 3,
           "weekStart": ""
       }
   kind: ConfigMap
