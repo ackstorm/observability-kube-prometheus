@@ -8433,7 +8433,7 @@ items:
           "fiscalYearStartMonth": 0,
           "gnetId": 17882,
           "graphTooltip": 0,
-          "id": 1247,
+          "id": 1940,
           "links": [
 
           ],
@@ -10071,7 +10071,7 @@ items:
               ]
           },
           "time": {
-              "from": "now-1h",
+              "from": "now-3h",
               "to": "now"
           },
           "timeRangeUpdatedDuringEditOrView": false,
@@ -13735,7 +13735,7 @@ items:
           "editable": true,
           "fiscalYearStartMonth": 0,
           "graphTooltip": 0,
-          "id": 1674,
+          "id": 1942,
           "links": [
 
           ],
@@ -13753,7 +13753,7 @@ items:
                   "panels": [
 
                   ],
-                  "title": "Requests - Usage (negative values are unused reservations)",
+                  "title": "Requests/Limits - Usage (negative values are unused reservations)",
                   "type": "row"
               },
               {
@@ -13817,16 +13817,39 @@ items:
                           "unit": "none"
                       },
                       "overrides": [
-
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Optimal"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.lineStyle",
+                                      "value": {
+                                          "dash": [
+                                              10,
+                                              10
+                                          ],
+                                          "fill": "dash"
+                                      }
+                                  },
+                                  {
+                                      "id": "color",
+                                      "value": {
+                                          "mode": "fixed"
+                                      }
+                                  }
+                              ]
+                          }
                       ]
                   },
                   "gridPos": {
-                      "h": 10,
+                      "h": 7,
                       "w": 11,
                       "x": 0,
                       "y": 1
                   },
-                  "id": 6,
+                  "id": 8,
                   "options": {
                       "legend": {
                           "calcs": [
@@ -13839,6 +13862,7 @@ items:
                           "sortDesc": false
                       },
                       "tooltip": {
+                          "maxHeight": 600,
                           "mode": "single",
                           "sort": "none"
                       }
@@ -13866,6 +13890,19 @@ items:
                           "legendFormat": "{{$aggregation}} Request",
                           "range": true,
                           "refId": "B"
+                      },
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "vector(0)",
+                          "hide": false,
+                          "instant": false,
+                          "legendFormat": "Optimal",
+                          "range": true,
+                          "refId": "C"
                       }
                   ],
                   "title": "CPU Request-Usage",
@@ -13932,11 +13969,34 @@ items:
                           "unit": "bytes"
                       },
                       "overrides": [
-
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Optimal"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.lineStyle",
+                                      "value": {
+                                          "dash": [
+                                              10,
+                                              10
+                                          ],
+                                          "fill": "dash"
+                                      }
+                                  },
+                                  {
+                                      "id": "color",
+                                      "value": {
+                                          "mode": "fixed"
+                                      }
+                                  }
+                              ]
+                          }
                       ]
                   },
                   "gridPos": {
-                      "h": 10,
+                      "h": 7,
                       "w": 13,
                       "x": 11,
                       "y": 1
@@ -13954,6 +14014,7 @@ items:
                           "sortDesc": false
                       },
                       "tooltip": {
+                          "maxHeight": 600,
                           "mode": "single",
                           "sort": "none"
                       }
@@ -13981,352 +14042,901 @@ items:
                           "legendFormat": "{{$aggregation}} Request",
                           "range": true,
                           "refId": "B"
+                      },
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "vector(0)",
+                          "hide": false,
+                          "instant": false,
+                          "legendFormat": "Optimal",
+                          "range": true,
+                          "refId": "C"
                       }
                   ],
                   "title": "Memory Request-Usage",
                   "type": "timeseries"
               },
               {
-                  "columns": [
-
-                  ],
                   "datasource": {
                       "type": "prometheus",
                       "uid": "${datasource}"
                   },
-                  "fontSize": "80%",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisBorderShow": false,
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "insertNulls": false,
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": 3600000,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          },
+                          "unit": "none"
+                      },
+                      "overrides": [
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Optimal"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.lineStyle",
+                                      "value": {
+                                          "dash": [
+                                              10,
+                                              10
+                                          ],
+                                          "fill": "dash"
+                                      }
+                                  },
+                                  {
+                                      "id": "color",
+                                      "value": {
+                                          "mode": "fixed"
+                                      }
+                                  }
+                              ]
+                          }
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 7,
+                      "w": 11,
+                      "x": 0,
+                      "y": 8
+                  },
+                  "id": 6,
+                  "options": {
+                      "legend": {
+                          "calcs": [
+                              "lastNotNull"
+                          ],
+                          "displayMode": "table",
+                          "placement": "right",
+                          "showLegend": true,
+                          "sortBy": "Last *",
+                          "sortDesc": false
+                      },
+                      "tooltip": {
+                          "maxHeight": 600,
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum by ($aggregation)(\n    (sum by (cluster_id,namespace,pod,container) (rate(container_cpu_usage_seconds_total{cluster_id=~\"$cluster\", namespace=~\"$namespace\", container=~\"$container\", container!=\"POD\",container!=\"\"}[1h])))\n    -  \n    (sum by (cluster_id,namespace,pod,container) (kube_pod_container_resource_limits{resource=\"cpu\",cluster_id=~\"$cluster\", namespace=~\"$namespace\", container=~\"$container\", container!=\"POD\",container!=\"\"}))\n)\n \n",
+                          "legendFormat": "__auto",
+                          "range": true,
+                          "refId": "A"
+                      },
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "-sum by ($aggregation)(\n    (sum by (cluster_id,namespace,pod,container) (kube_pod_container_resource_requests{resource=\"cpu\",cluster_id=~\"$cluster\", namespace=~\"$namespace\", container=~\"$container\", container!=\"POD\",container!=\"\"}))\n)",
+                          "hide": true,
+                          "legendFormat": "{{$aggregation}} Request",
+                          "range": true,
+                          "refId": "B"
+                      },
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "vector(0)",
+                          "hide": false,
+                          "instant": false,
+                          "legendFormat": "Optimal",
+                          "range": true,
+                          "refId": "C"
+                      }
+                  ],
+                  "title": "CPU Limits-Usage",
+                  "type": "timeseries"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisBorderShow": false,
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "insertNulls": false,
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": 3600000,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          },
+                          "unit": "bytes"
+                      },
+                      "overrides": [
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Optimal"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.lineStyle",
+                                      "value": {
+                                          "dash": [
+                                              10,
+                                              10
+                                          ],
+                                          "fill": "dash"
+                                      }
+                                  },
+                                  {
+                                      "id": "color",
+                                      "value": {
+                                          "mode": "fixed"
+                                      }
+                                  }
+                              ]
+                          }
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 7,
+                      "w": 13,
+                      "x": 11,
+                      "y": 8
+                  },
+                  "id": 9,
+                  "options": {
+                      "legend": {
+                          "calcs": [
+                              "lastNotNull"
+                          ],
+                          "displayMode": "table",
+                          "placement": "right",
+                          "showLegend": true,
+                          "sortBy": "Last *",
+                          "sortDesc": false
+                      },
+                      "tooltip": {
+                          "maxHeight": 600,
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum by ($aggregation) (\n    (sum by (cluster_id,namespace,pod,container) (container_memory_usage_bytes{cluster_id=~\"$cluster\",namespace=~\"$namespace\",container=~\"$container\",container!=\"POD\",container!=\"\"}))\n   -(sum by (cluster_id,namespace,pod,container) (kube_pod_container_resource_limits{resource=\"memory\",unit=\"byte\",cluster_id=~\"$cluster\",namespace=~\"$namespace\",container=~\"$container\",container!=\"POD\",container!=\"\"}))\n)",
+                          "legendFormat": "__auto",
+                          "range": true,
+                          "refId": "A"
+                      },
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum by ($aggregation) (\n    -(sum by (cluster_id,namespace,pod,container) (kube_pod_container_resource_requests{resource=\"memory\",unit=\"byte\",cluster_id=~\"$cluster\",namespace=~\"$namespace\",container=~\"$container\",container!=\"POD\",container!=\"\"}))\n)",
+                          "hide": true,
+                          "legendFormat": "{{$aggregation}} Request",
+                          "range": true,
+                          "refId": "B"
+                      },
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                          },
+                          "editorMode": "code",
+                          "expr": "vector(0)",
+                          "hide": false,
+                          "instant": false,
+                          "legendFormat": "Optimal",
+                          "range": true,
+                          "refId": "C"
+                      }
+                  ],
+                  "title": "Memory Limits-Usage",
+                  "type": "timeseries"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "${datasource}"
+                  },
+                  "fieldConfig": {
+                      "defaults": {
+                          "custom": {
+                              "align": "right",
+                              "cellOptions": {
+                                  "type": "auto"
+                              },
+                              "inspect": false
+                          },
+                          "decimals": 2,
+                          "displayName": "",
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          },
+                          "unit": "short"
+                      },
+                      "overrides": [
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Time"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Time"
+                                  },
+                                  {
+                                      "id": "custom.hidden",
+                                      "value": true
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "container"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Microservice"
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "short"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "pod"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Pod name"
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "short"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Value #A"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Overall CPU% "
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "percent"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.cellOptions",
+                                      "value": {
+                                          "type": "color-text"
+                                      }
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  },
+                                  {
+                                      "id": "thresholds",
+                                      "value": {
+                                          "mode": "absolute",
+                                          "steps": [
+                                              {
+                                                  "color": "rgba(50, 172, 45, 0.97)",
+                                                  "value": null
+                                              },
+                                              {
+                                                  "color": "rgba(237, 129, 40, 0.89)",
+                                                  "value": 50
+                                              },
+                                              {
+                                                  "color": "rgba(245, 54, 54, 0.9)",
+                                                  "value": 70
+                                              }
+                                          ]
+                                      }
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Value #B"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Total CPU "
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "short"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Value #C"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Total CPU limit"
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "short"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Value #D"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Total memory usage"
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "bytes"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Value #E"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Total memory requirement"
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "bytes"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Value #F"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Total memory Limit"
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "bytes"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "node"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "节点"
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "short"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Value #I"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Average memory% (WSS)"
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "percent"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.cellOptions",
+                                      "value": {
+                                          "type": "color-text"
+                                      }
+                                  },
+                                  {
+                                      "id": "thresholds",
+                                      "value": {
+                                          "mode": "absolute",
+                                          "steps": [
+                                              {
+                                                  "color": "rgba(50, 172, 45, 0.97)",
+                                                  "value": null
+                                              },
+                                              {
+                                                  "color": "rgba(237, 129, 40, 0.89)",
+                                                  "value": 70
+                                              },
+                                              {
+                                                  "color": "rgba(245, 54, 54, 0.9)",
+                                                  "value": 90
+                                              }
+                                          ]
+                                      }
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Value #J"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Total disk usage"
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "bytes"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.cellOptions",
+                                      "value": {
+                                          "type": "color-text"
+                                      }
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  },
+                                  {
+                                      "id": "thresholds",
+                                      "value": {
+                                          "mode": "absolute",
+                                          "steps": [
+                                              {
+                                                  "color": "rgba(50, 172, 45, 0.97)",
+                                                  "value": null
+                                              },
+                                              {
+                                                  "color": "rgba(237, 129, 40, 0.89)",
+                                                  "value": 10737418240
+                                              },
+                                              {
+                                                  "color": "rgba(245, 54, 54, 0.9)",
+                                                  "value": 16106127360
+                                              }
+                                          ]
+                                      }
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Value #G"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Number of containers"
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "short"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Value #H"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Average memory% "
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "percent"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.cellOptions",
+                                      "value": {
+                                          "type": "color-text"
+                                      }
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  },
+                                  {
+                                      "id": "thresholds",
+                                      "value": {
+                                          "mode": "absolute",
+                                          "steps": [
+                                              {
+                                                  "color": "rgba(50, 172, 45, 0.97)",
+                                                  "value": null
+                                              },
+                                              {
+                                                  "color": "rgba(237, 129, 40, 0.89)",
+                                                  "value": 80
+                                              },
+                                              {
+                                                  "color": "rgba(245, 54, 54, 0.9)",
+                                                  "value": 90
+                                              }
+                                          ]
+                                      }
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Value #K"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Total memory usage (RSS)"
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "bytes"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Value #L"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "displayName",
+                                      "value": "Overall audit usage"
+                                  },
+                                  {
+                                      "id": "unit",
+                                      "value": "short"
+                                  },
+                                  {
+                                      "id": "decimals",
+                                      "value": 2
+                                  },
+                                  {
+                                      "id": "custom.align"
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Total memory usage (RSS)"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.width",
+                                      "value": 199
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Total memory requirement"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.width",
+                                      "value": 192
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Total CPU "
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.width",
+                                      "value": 96
+                                  }
+                              ]
+                          },
+                          {
+                              "matcher": {
+                                  "id": "byName",
+                                  "options": "Total CPU limit"
+                              },
+                              "properties": [
+                                  {
+                                      "id": "custom.width",
+                                      "value": 124
+                                  }
+                              ]
+                          }
+                      ]
+                  },
                   "gridPos": {
                       "h": 15,
                       "w": 24,
                       "x": 0,
-                      "y": 11
+                      "y": 15
                   },
                   "id": 7,
-                  "showHeader": true,
-                  "sort": {
-                      "col": 1,
-                      "desc": true
+                  "options": {
+                      "cellHeight": "sm",
+                      "footer": {
+                          "countRows": false,
+                          "fields": "",
+                          "reducer": [
+                              "sum"
+                          ],
+                          "show": false
+                      },
+                      "showHeader": true,
+                      "sortBy": [
+
+                      ]
                   },
-                  "styles": [
-                      {
-                          "$$hashKey": "object:3003",
-                          "alias": "Time",
-                          "align": "auto",
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "pattern": "Time",
-                          "type": "hidden"
-                      },
-                      {
-                          "$$hashKey": "object:3004",
-                          "alias": "Microservice",
-                          "align": "auto",
-                          "colors": [
-                              "rgba(245, 54, 54, 0.9)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(50, 172, 45, 0.97)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "container",
-                          "thresholds": [
-
-                          ],
-                          "type": "number",
-                          "unit": "short"
-                      },
-                      {
-                          "$$hashKey": "object:3005",
-                          "alias": "Pod name",
-                          "align": "auto",
-                          "colors": [
-                              "rgba(245, 54, 54, 0.9)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(50, 172, 45, 0.97)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "pod",
-                          "thresholds": [
-
-                          ],
-                          "type": "number",
-                          "unit": "short"
-                      },
-                      {
-                          "$$hashKey": "object:3006",
-                          "alias": "Overall CPU% ",
-                          "align": "auto",
-                          "colorMode": "cell",
-                          "colors": [
-                              "rgba(50, 172, 45, 0.97)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(245, 54, 54, 0.9)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "Value #A",
-                          "thresholds": [
-                              "50",
-                              "70"
-                          ],
-                          "type": "number",
-                          "unit": "percent"
-                      },
-                      {
-                          "$$hashKey": "object:3007",
-                          "alias": "Total CPU ",
-                          "align": "auto",
-                          "colors": [
-                              "rgba(245, 54, 54, 0.9)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(50, 172, 45, 0.97)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "Value #B",
-                          "thresholds": [
-
-                          ],
-                          "type": "number",
-                          "unit": "short"
-                      },
-                      {
-                          "$$hashKey": "object:3008",
-                          "alias": "Total CPU limit",
-                          "align": "auto",
-                          "colors": [
-                              "rgba(245, 54, 54, 0.9)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(50, 172, 45, 0.97)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "Value #C",
-                          "thresholds": [
-
-                          ],
-                          "type": "number",
-                          "unit": "short"
-                      },
-                      {
-                          "$$hashKey": "object:3009",
-                          "alias": "Total memory usage",
-                          "align": "auto",
-                          "colors": [
-                              "rgba(245, 54, 54, 0.9)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(50, 172, 45, 0.97)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "Value #D",
-                          "thresholds": [
-
-                          ],
-                          "type": "number",
-                          "unit": "bytes"
-                      },
-                      {
-                          "$$hashKey": "object:3010",
-                          "alias": "Total memory requirement",
-                          "align": "auto",
-                          "colors": [
-                              "rgba(245, 54, 54, 0.9)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(50, 172, 45, 0.97)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "Value #E",
-                          "thresholds": [
-
-                          ],
-                          "type": "number",
-                          "unit": "bytes"
-                      },
-                      {
-                          "$$hashKey": "object:3011",
-                          "alias": "Total memory Limit",
-                          "align": "auto",
-                          "colors": [
-                              "rgba(245, 54, 54, 0.9)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(50, 172, 45, 0.97)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "Value #F",
-                          "thresholds": [
-
-                          ],
-                          "type": "number",
-                          "unit": "bytes"
-                      },
-                      {
-                          "$$hashKey": "object:3012",
-                          "alias": "节点",
-                          "align": "auto",
-                          "colors": [
-                              "rgba(245, 54, 54, 0.9)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(50, 172, 45, 0.97)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "node",
-                          "thresholds": [
-
-                          ],
-                          "type": "number",
-                          "unit": "short"
-                      },
-                      {
-                          "$$hashKey": "object:3015",
-                          "alias": "Average memory% (WSS)",
-                          "align": "",
-                          "colorMode": "cell",
-                          "colors": [
-                              "rgba(50, 172, 45, 0.97)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(245, 54, 54, 0.9)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "Value #I",
-                          "thresholds": [
-                              "70",
-                              "90"
-                          ],
-                          "type": "number",
-                          "unit": "percent"
-                      },
-                      {
-                          "$$hashKey": "object:3016",
-                          "alias": "Total disk usage",
-                          "align": "auto",
-                          "colorMode": "cell",
-                          "colors": [
-                              "rgba(50, 172, 45, 0.97)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(245, 54, 54, 0.9)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "Value #J",
-                          "thresholds": [
-                              "10737418240",
-                              "16106127360"
-                          ],
-                          "type": "number",
-                          "unit": "bytes"
-                      },
-                      {
-                          "$$hashKey": "object:7903",
-                          "alias": "Number of containers",
-                          "align": "auto",
-                          "colors": [
-                              "rgba(245, 54, 54, 0.9)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(50, 172, 45, 0.97)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "Value #G",
-                          "thresholds": [
-
-                          ],
-                          "type": "string",
-                          "unit": "short"
-                      },
-                      {
-                          "$$hashKey": "object:1769",
-                          "alias": "Average memory% ",
-                          "align": "auto",
-                          "colorMode": "cell",
-                          "colors": [
-                              "rgba(50, 172, 45, 0.97)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(245, 54, 54, 0.9)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "Value #H",
-                          "thresholds": [
-                              "80",
-                              "90"
-                          ],
-                          "type": "number",
-                          "unit": "percent"
-                      },
-                      {
-                          "$$hashKey": "object:1780",
-                          "alias": "Total memory usage (RSS)",
-                          "align": "auto",
-                          "colors": [
-                              "rgba(245, 54, 54, 0.9)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(50, 172, 45, 0.97)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "Value #K",
-                          "thresholds": [
-
-                          ],
-                          "type": "number",
-                          "unit": "bytes"
-                      },
-                      {
-                          "$$hashKey": "object:4993",
-                          "alias": "Overall audit usage",
-                          "align": "auto",
-                          "colors": [
-                              "rgba(245, 54, 54, 0.9)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(50, 172, 45, 0.97)"
-                          ],
-                          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                          "decimals": 2,
-                          "mappingType": 1,
-                          "pattern": "Value #L",
-                          "thresholds": [
-
-                          ],
-                          "type": "number",
-                          "unit": "short"
-                      },
-                      {
-                          "$$hashKey": "object:3017",
-                          "alias": "",
-                          "align": "right",
-                          "colors": [
-                              "rgba(245, 54, 54, 0.9)",
-                              "rgba(237, 129, 40, 0.89)",
-                              "rgba(50, 172, 45, 0.97)"
-                          ],
-                          "decimals": 2,
-                          "pattern": "/.*/",
-                          "thresholds": [
-
-                          ],
-                          "type": "hidden",
-                          "unit": "short"
-                      }
-                  ],
+                  "pluginVersion": "11.0.0-preview",
                   "targets": [
                       {
                           "datasource": {
@@ -14495,12 +15105,21 @@ items:
                       }
                   ],
                   "title": "Microservice (container name) resource statistics",
-                  "transform": "table",
-                  "type": "table-old"
+                  "transformations": [
+                      {
+                          "id": "merge",
+                          "options": {
+                              "reducers": [
+
+                              ]
+                          }
+                      }
+                  ],
+                  "type": "table"
               }
           ],
           "refresh": "",
-          "schemaVersion": 38,
+          "schemaVersion": 39,
           "tags": [
               "utilization",
               "metrics",
@@ -14511,8 +15130,8 @@ items:
                   {
                       "current": {
                           "selected": false,
-                          "text": "metrics-pro-cloud-apps-01",
-                          "value": "metrics-pro-cloud-apps-01"
+                          "text": "metrics-demo-observability-peer",
+                          "value": "metrics-demo-observability-peer"
                       },
                       "hide": 0,
                       "includeAll": false,
@@ -14531,8 +15150,8 @@ items:
                   {
                       "current": {
                           "selected": true,
-                          "text": "namespace",
-                          "value": "namespace"
+                          "text": "container",
+                          "value": "container"
                       },
                       "hide": 0,
                       "includeAll": false,
@@ -14545,12 +15164,12 @@ items:
                               "value": "cluster_id"
                           },
                           {
-                              "selected": true,
+                              "selected": false,
                               "text": "namespace",
                               "value": "namespace"
                           },
                           {
-                              "selected": false,
+                              "selected": true,
                               "text": "container",
                               "value": "container"
                           }
@@ -14562,7 +15181,7 @@ items:
                   },
                   {
                       "current": {
-                          "selected": true,
+                          "selected": false,
                           "text": "All",
                           "value": "$__all"
                       },
@@ -14591,8 +15210,8 @@ items:
                   {
                       "current": {
                           "selected": true,
-                          "text": "All",
-                          "value": "$__all"
+                          "text": "observability-peer",
+                          "value": "observability-peer"
                       },
                       "datasource": {
                           "type": "prometheus",
@@ -14618,7 +15237,7 @@ items:
                   },
                   {
                       "current": {
-                          "selected": false,
+                          "selected": true,
                           "text": "All",
                           "value": "$__all"
                       },
@@ -14650,6 +15269,7 @@ items:
               "from": "now-6h",
               "to": "now"
           },
+          "timeRangeUpdatedDuringEditOrView": false,
           "timepicker": {
 
           },
