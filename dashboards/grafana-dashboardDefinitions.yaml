@@ -61276,7 +61276,7 @@ items:
           "editable": true,
           "fiscalYearStartMonth": 0,
           "graphTooltip": 0,
-          "id": 1245,
+          "id": 3502,
           "links": [
 
           ],
@@ -61697,7 +61697,7 @@ items:
                       "x": 0,
                       "y": 18
                   },
-                  "id": 20,
+                  "id": 21,
                   "options": {
                       "legend": {
                           "displayMode": "list",
@@ -61737,7 +61737,7 @@ items:
                               "uid": "${datasource_loki}"
                           },
                           "editorMode": "code",
-                          "expr": "count(rate({app=~\".*-$service\"} |= `ERROR` [$__auto]))",
+                          "expr": "count(rate({app=~\".*$service\"} |= `ERROR` [$__auto]))",
                           "format": "table",
                           "metrics": [
                               {
@@ -61756,7 +61756,7 @@ items:
                               "uid": "${datasource_loki}"
                           },
                           "editorMode": "code",
-                          "expr": "count(rate({app=~\".*-$service\"} |= `WARNING` [$__auto]))",
+                          "expr": "count(rate({app=~\".*$service\"} |= `WARNING` [$__auto]))",
                           "hide": false,
                           "queryType": "range",
                           "refId": "B"
@@ -61829,7 +61829,7 @@ items:
                       "x": 4,
                       "y": 18
                   },
-                  "id": 17,
+                  "id": 22,
                   "options": {
                       "cellHeight": "sm",
                       "footer": {
@@ -61864,7 +61864,7 @@ items:
                               "uid": "${datasource_loki}"
                           },
                           "editorMode": "code",
-                          "expr": "{app=~\".*-$service\"} |= ``",
+                          "expr": "{app=~\".*$service\"} |= ``",
                           "format": "logs",
                           "hide": false,
                           "metrics": [
@@ -61893,9 +61893,9 @@ items:
               "list": [
                   {
                       "current": {
-                          "selected": false,
-                          "text": "metrics-demo-observability-peer",
-                          "value": "metrics-demo-observability-peer"
+                          "selected": true,
+                          "text": "metrics-stg-staging-apps-01",
+                          "value": "metrics-stg-staging-apps-01"
                       },
                       "hide": 0,
                       "includeAll": false,
@@ -61916,8 +61916,8 @@ items:
                       "allValue": "",
                       "current": {
                           "selected": false,
-                          "text": "adservice",
-                          "value": "adservice"
+                          "text": "dynamic-delivery-confluent",
+                          "value": "dynamic-delivery-confluent"
                       },
                       "datasource": {
                           "type": "prometheus",
@@ -61946,8 +61946,8 @@ items:
                   {
                       "current": {
                           "selected": false,
-                          "text": "logs-demo-observability-peer",
-                          "value": "logs-demo-observability-peer"
+                          "text": "logs-stg-staging-apps-01",
+                          "value": "logs-stg-staging-apps-01"
                       },
                       "datasource": {
                           "type": "prometheus",
@@ -62050,7 +62050,7 @@ items:
               ]
           },
           "time": {
-              "from": "now-30m",
+              "from": "now-3h",
               "to": "now"
           },
           "timeRangeUpdatedDuringEditOrView": false,
