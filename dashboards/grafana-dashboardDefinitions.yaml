@@ -6039,7 +6039,7 @@ items:
           "editable": true,
           "fiscalYearStartMonth": 0,
           "graphTooltip": 0,
-          "id": 492,
+          "id": 4277,
           "links": [
 
           ],
@@ -6066,7 +6066,7 @@ items:
                       "content": "<div style=\"padding: 10px;\">\n  <div style=\"margin-bottom: 30px;display: flex; flex-direction: row; align-items: center; margin-top: 10px;\">\n    <img style=\"height: 40px; width: 40px; margin-right: 10px;\" src=\"https://storage.googleapis.com/grafanalabs-integration-logos/kubernetes.svg\" />\n    <h2 style=\"margin-top: 5px;\">Welcome to Grafana for Kubernetes</h2>\n  </div>\n  <div style=\"display: flex; width: 100%;\">\n    <div style=\"width: 50%;\">\n      <div style=\"margin: 0 0 10px 0;display: flex; \">\n        <img style=\"margin-right: 20px; margin-top: 10px; height: 25px;\" src=\"https://storage.googleapis.com/k8s-integration-icons/compass.png\" alt=\"\">\n        <p style=\"width: 80%; margin-top: 5px;\">Visualize and query cAdvisor, Kubelet and kube-state-metrics for your K8s cluster(s)</p>\n      </div>\n      <div style=\"margin: 10px 0 10px 0;display: flex; \">\n        <img style=\"margin-right: 20px; margin-top: 10px; height: 25px;\" src=\"https://storage.googleapis.com/k8s-integration-icons/dash.png\" alt=\"\">\n        <p style=\"width: 80%; margin-top: 5px;\">Access premade dashboards for visibility into resource consumption and cluster operations</p>\n      </div>\n    </div>\n    <div style=\"width: 50%; margin-top: 0;\">\n      <div style=\"margin: 0 0 10px 0; display: flex; \">\n        <img style=\"margin-right: 20px; margin-top: 10px; height: 25px;\" src=\"https://storage.googleapis.com/k8s-integration-icons/bell.png\" alt=\"\">\n        <p style=\"width: 80%; margin-top: 5px;\">Create alerts based on cAdvisor and kube-state-metrics in Grafana Cloud Alerting</p>\n      </div>\n      <div style=\"margin: 0 0 10px 0; display: flex; \">\n        <img style=\"margin-right: 20px; margin-top: 10px; height: 25px;\" src=\"https://storage.googleapis.com/k8s-integration-icons/loki.svg\" alt=\"\">\n        <p style=\"width: 80%; margin-top: 5px;\">Collect and ship Pod logs to Grafana Cloud. Learn more <a href=\"https://grafana.com/docs/grafana-cloud/quickstart/agent-k8s/k8s_agent_logs/\" target=\"_blank\">here</a>.</p>\n      </div>\n    </div>\n  </div>\n</div>",
                       "mode": "html"
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "11.0.0-preview",
                   "targets": [
                       {
                           "datasource": {
@@ -6146,12 +6146,14 @@ items:
                           "fields": "",
                           "values": false
                       },
+                      "showPercentChange": false,
                       "text": {
                           "valueSize": 20
                       },
-                      "textMode": "name"
+                      "textMode": "name",
+                      "wideLayout": true
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "11.0.0-preview",
                   "targets": [
                       {
                           "datasource": {
@@ -6245,9 +6247,11 @@ items:
                           "fields": "",
                           "values": false
                       },
-                      "textMode": "auto"
+                      "showPercentChange": false,
+                      "textMode": "auto",
+                      "wideLayout": true
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "11.0.0-preview",
                   "targets": [
                       {
                           "datasource": {
@@ -6315,9 +6319,11 @@ items:
                           "fields": "",
                           "values": false
                       },
-                      "textMode": "auto"
+                      "showPercentChange": false,
+                      "textMode": "auto",
+                      "wideLayout": true
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "11.0.0-preview",
                   "targets": [
                       {
                           "datasource": {
@@ -6355,7 +6361,7 @@ items:
                       "content": "<h3>Resource consumption visibility</h3>\n<p>We provide 7 pre-built dashboards that give you visibility into resource consumption, with drilldowns by cluster, Namespace, Pod, Node and more.</p>",
                       "mode": "html"
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "11.0.0-preview",
                   "targets": [
                       {
                           "datasource": {
@@ -6377,6 +6383,7 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisBorderShow": false,
                               "axisCenteredZero": false,
                               "axisColorMode": "text",
                               "axisLabel": "CPU CORES",
@@ -6391,6 +6398,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineStyle": {
                                   "fill": "solid"
@@ -6454,6 +6462,7 @@ items:
                           "sortDesc": true
                       },
                       "tooltip": {
+                          "maxHeight": 600,
                           "mode": "single",
                           "sort": "none"
                       }
@@ -6487,9 +6496,6 @@ items:
                       "y": 10
                   },
                   "id": 5,
-                  "links": [
-
-                  ],
                   "options": {
                       "includeVars": false,
                       "keepTime": false,
@@ -6503,7 +6509,7 @@ items:
                           "Kubernetes"
                       ]
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "11.0.0-preview",
                   "targets": [
                       {
                           "datasource": {
@@ -6527,6 +6533,7 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisBorderShow": false,
                               "axisCenteredZero": false,
                               "axisColorMode": "text",
                               "axisLabel": "",
@@ -6541,6 +6548,7 @@ items:
                                   "tooltip": false,
                                   "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "smooth",
                               "lineWidth": 2,
                               "pointSize": 5,
@@ -6600,6 +6608,7 @@ items:
                           "sortDesc": true
                       },
                       "tooltip": {
+                          "maxHeight": 600,
                           "mode": "single",
                           "sort": "none"
                       }
@@ -6642,7 +6651,7 @@ items:
                       "content": "<h3>Cluster operations visibility</h3>\n<p>We provide 2 pre-built dashboards that give you visibility into the operations of your K8s clusters, including Kubelet metrics and Persistent Volumes.</p>\n<a href=\"https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/\" target=\"_blank\">Read more about Kubelet ></a>",
                       "mode": "html"
                   },
-                  "pluginVersion": "10.0.3",
+                  "pluginVersion": "11.0.0-preview",
                   "targets": [
                       {
                           "datasource": {
@@ -6666,9 +6675,6 @@ items:
                       "y": 21
                   },
                   "id": 27,
-                  "links": [
-
-                  ],
                   "options": {
                       "dedupStrategy": "none",
                       "enableLogDetails": true,
@@ -6735,8 +6741,7 @@ items:
           ],
           "refresh": "1m",
           "revision": 1,
-          "schemaVersion": 38,
-          "style": "dark",
+          "schemaVersion": 39,
           "tags": [
 
           ],
@@ -6745,8 +6750,8 @@ items:
                   {
                       "current": {
                           "selected": true,
-                          "text": "metrics-pro-ctt-observability",
-                          "value": "metrics-pro-ctt-observability"
+                          "text": "metrics-pro-core-01",
+                          "value": "metrics-pro-core-01"
                       },
                       "hide": 0,
                       "includeAll": false,
@@ -6766,8 +6771,8 @@ items:
                   {
                       "current": {
                           "selected": false,
-                          "text": "pro-ctt-observability",
-                          "value": "pro-ctt-observability"
+                          "text": "pro-core-01",
+                          "value": "pro-core-01"
                       },
                       "datasource": {
                           "uid": "${datasource}"
@@ -6906,8 +6911,8 @@ items:
                   {
                       "current": {
                           "selected": false,
-                          "text": "logs-pro-ctt-observability",
-                          "value": "logs-pro-ctt-observability"
+                          "text": "logs-pro-core-01",
+                          "value": "logs-pro-core-01"
                       },
                       "datasource": {
                           "type": "prometheus",
@@ -6926,7 +6931,7 @@ items:
                           "query": "query_result(label_replace(up{job=\"kube-state-metrics\"}, \"datasource\", \"logs-$1\", \"cluster\", \"(.*)\"))",
                           "refId": "PrometheusVariableQueryEditor-VariableQuery"
                       },
-                      "refresh": 1,
+                      "refresh": 2,
                       "regex": "/.*datasource=\\\"(.*?)\\\".*/",
                       "skipUrlSync": false,
                       "sort": 0,
@@ -6938,13 +6943,14 @@ items:
               "from": "now-30m",
               "to": "now"
           },
+          "timeRangeUpdatedDuringEditOrView": false,
           "timepicker": {
 
           },
           "timezone": "",
           "title": "Observability - home",
           "uid": "bf26a4fb-4c49-44b7-a9f2-8f6f57b4c847",
-          "version": 9,
+          "version": 1,
           "weekStart": ""
       }
   kind: ConfigMap

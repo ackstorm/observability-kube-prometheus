@@ -47,6 +47,7 @@ spec:
         summary: An alert that should always be firing to certify that Alertmanager is working properly.
       expr: sum(absent(up{job="prometheus-prometheus-peer"}) or vector(0)) == 0
       labels:
+        service: prometheus
         severity: critical
   - name: node-network
     rules:
