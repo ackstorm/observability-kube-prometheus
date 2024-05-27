@@ -47,7 +47,14 @@ spec:
     - action: replace
       regex: container_memory_working_set_bytes;(.*)
       sourceLabels:
-      - __name__, node
+      - __name__
+      - node
+      targetLabel: instance
+    - action: replace
+      regex: container_cpu_usage_seconds_total;(.*)
+      sourceLabels:
+      - __name__
+      - node
       targetLabel: instance
     port: https-metrics
     relabelings:
@@ -81,7 +88,14 @@ spec:
     - action: replace
       regex: container_memory_working_set_bytes;(.*)
       sourceLabels:
-      - __name__, node
+      - __name__
+      - node
+      targetLabel: instance
+    - action: replace
+      regex: container_cpu_usage_seconds_total;(.*)
+      sourceLabels:
+      - __name__
+      - node
       targetLabel: instance
     path: /metrics/cadvisor
     port: https-metrics
@@ -100,7 +114,14 @@ spec:
     - action: replace
       regex: container_memory_working_set_bytes;(.*)
       sourceLabels:
-      - __name__, node
+      - __name__
+      - node
+      targetLabel: instance
+    - action: replace
+      regex: container_cpu_usage_seconds_total;(.*)
+      sourceLabels:
+      - __name__
+      - node
       targetLabel: instance
     path: /metrics/probes
     port: https-metrics
