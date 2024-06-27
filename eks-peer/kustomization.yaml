@@ -25,7 +25,6 @@ resources:
 - prometheus-clusterRoleBinding.yaml
 - prometheus-networkPolicy.yaml
 - prometheus-operator-serviceMonitor.yaml
-- prometheus-podDisruptionBudget.yaml
 - prometheus-prometheus.yaml
 - prometheus-roleBindingConfig.yaml
 - prometheus-roleConfig.yaml
